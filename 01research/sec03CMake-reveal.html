@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>CMake</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/night.css"/>
+  <link rel="stylesheet" href="/research-computing-with-cpp//css/ucl_reveal.css"/>
+  <link rel="stylesheet" href="/research-computing-with-cpp//site-styles/reveal.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">CMake</h1>
+</section>
+
+<section><section id="cmake" class="title-slide slide level2"><h2>CMake</h2></section><section id="ever-worked-in-industry" class="slide level3">
+<h3>Ever worked in Industry?</h3>
+<ul>
+<li>(0-3yrs) Junior Developer - given environment, team support</li>
+<li>(4-6yrs) Senior Developer - given environment, leading team</li>
+<li>(7+ years) Architect - chose tools, environment, design code</li>
+<li>Only cross-platform if product/business demands it</li>
+<li>All developers told to use the given platform no choice</li>
+</ul>
+</section><section id="ever-worked-in-research" class="slide level3">
+<h3>Ever worked in Research?</h3>
+<ul>
+<li>All prototyping, no scope</li>
+<li>Start from scratch, little support</li>
+<li>No end product, no nice examples</li>
+<li>Cutting edge use of maths/science/technology</li>
+<li>Share with others on other platforms</li>
+<li>Develop on Windows, run on cluster (Linux)</li>
+</ul>
+</section><section id="research-software-engineering-dilemma" class="slide level3">
+<h3>Research Software Engineering Dilemma</h3>
+<ul>
+<li>Comparing Research with Industry, in Research you have:
+<ul>
+<li>Least experienced developers</li>
+<li>with the least support</li>
+<li>developing cross-platform</li>
+<li>No clear specification or scope</li>
+</ul></li>
+<li>Struggle of C++ is often not the language its the environment</li>
+</ul>
+</section><section id="build-environment" class="slide level3">
+<h3>Build Environment</h3>
+<ul>
+<li>Windows: Visual Studio solution files</li>
+<li>Linux: Makefiles</li>
+<li>Mac: XCode projects / Makefiles</li>
+</ul>
+<p>Question: How was your last project built?</p>
+</section><section id="cmake-introduction" class="slide level3">
+<h3>CMake Introduction</h3>
+<ul>
+<li>This is a practical course</li>
+<li>We will use CMake as a build tool</li>
+<li>CMake produces
+<ul>
+<li>Windows: Visual Studio project files</li>
+<li>Linux: Make files</li>
+<li>Mac: XCode projects, Make files</li>
+</ul></li>
+<li>So you write 1 build language (CMake) and run on multi-platform.</li>
+<li>This course will provide most CMake code and boiler plate code for you, so we can focus more on C++. But you are expected to google CMake issues and work with CMake.</li>
+</ul>
+</section><section id="cmake-usage-linuxmac" class="slide level3">
+<h3>CMake Usage Linux/Mac</h3>
+<p>Demo an “out-of-source” build</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><a class="sourceLine" id="cb1-1" title="1"><span class="fu">mkdir</span> cmake_demo</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="bu">cd</span> cmake_demo</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="fu">git</span> clone https://github.com/MattClarkson/CMakeHelloWorld</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="bu">cd</span> CMakeHelloWorld</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="fu">mkdir</span> build</a>
+<a class="sourceLine" id="cb1-6" title="6"><span class="bu">cd</span> build</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="fu">cmake</span> ..</a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="fu">make</span></a></code></pre></div>
+</section><section id="homework---2" class="slide level3">
+<h3>Homework - 2</h3>
+<ul>
+<li>Build https://github.com/MattClarkson/CMakeHelloWorld.git</li>
+<li>Ensure you do “out-of-source” builds</li>
+<li>Use CMake to configure separate Debug and Release versions</li>
+<li>Add code to hello.cpp:
+<ul>
+<li>On Linux/Mac re-compile just using make</li>
+</ul></li>
+</ul>
+</section><section id="homework---3" class="slide level3">
+<h3>Homework - 3</h3>
+<ul>
+<li>Build https://github.com/MattClarkson/CMakeHelloWorld.git</li>
+<li>Exit all code editors</li>
+<li>Rename hello.cpp</li>
+<li>Change CMakeLists.txt accordingly</li>
+<li>Notice: The executable name and .cpp file name can be different</li>
+<li>In your build folder, just try rebuilding.</li>
+<li>You should see that CMake is re-triggered, so you get a cmake/compile cycle.</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: "100%",
+        height: "100%",
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.1,
+        maxScale: 1.5,
+        math: {
+          mathjax: '/usr/share/javascript/mathjax/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

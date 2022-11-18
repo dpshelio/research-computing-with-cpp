@@ -1,0 +1,4977 @@
+\hypertarget{git}{%
+\subsection{Git}\label{git}}
+
+\hypertarget{git-introduction}{%
+\subsubsection{Git Introduction}\label{git-introduction}}
+
+\begin{itemize}
+\tightlist
+\item
+  This is a practical course
+\item
+  We will use git for version control
+\item
+  Submit git repository for coursework
+\item
+  Here we provide a very minimal introduction
+\end{itemize}
+
+\hypertarget{git-resources}{%
+\subsubsection{Git Resources}\label{git-resources}}
+
+\begin{itemize}
+\tightlist
+\item
+  Complete beginner - \href{https://try.github.io}{Try Git}
+\item
+  \href{https://git-scm.com/book/en/v2}{Git book by Scott Chacon}
+\item
+  \href{http://github-pages.ucl.ac.uk/rsd-engineeringcourse/ch02git/}{Git
+  section} of MPHYG001
+\item
+  \href{https://github.com/UCL/rsd-engineeringcourse}{MPHYG001 repo}
+\end{itemize}
+
+\hypertarget{git-walk-through---1}{%
+\subsubsection{Git Walk Through - 1}\label{git-walk-through---1}}
+
+(demo on command line)
+
+\begin{itemize}
+\tightlist
+\item
+  Creating your own repo:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    git init
+  \item
+    git add
+  \item
+    git commit
+  \item
+    git log
+  \item
+    git status
+  \item
+    git remote add
+  \item
+    git push
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{git-walk-through---2}{%
+\subsubsection{Git Walk Through - 2}\label{git-walk-through---2}}
+
+(demo on command line)
+
+\begin{itemize}
+\tightlist
+\item
+  Working on existing repo:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    git clone
+  \item
+    git add
+  \item
+    git commit
+  \item
+    git log
+  \item
+    git status\\
+  \item
+    git push
+  \item
+    git pull
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{git-walk-through---3}{%
+\subsubsection{Git Walk Through - 3}\label{git-walk-through---3}}
+
+\begin{itemize}
+\tightlist
+\item
+  Cloning or forking:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If you have write permission to a repo: clone it, and make
+    modifications
+  \item
+    If you don't: fork it, to make your own version, then clone that and
+    make modifications.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework---1}{%
+\subsubsection{Homework - 1}\label{homework---1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Register Github
+\item
+  Register for private repos - free for academia.
+\item
+  Find project of interest - try cloning it, make edits, can you push?
+\item
+  Find project of interest - try forking it, make edits, can you push?
+\end{itemize}
+
+\hypertarget{lecture-1-c-in-research}{%
+\subsection{Lecture 1: C++ In Research}\label{lecture-1-c-in-research}}
+
+\hypertarget{problems-in-research}{%
+\subsubsection{Problems In Research}\label{problems-in-research}}
+
+\begin{itemize}
+\tightlist
+\item
+  Poor quality software
+\item
+  Excuses
+
+  \begin{itemize}
+  \tightlist
+  \item
+    I'm not a software engineer
+  \item
+    I don't have time
+  \item
+    It's just a prototype
+  \item
+    I'm unsure of my code (scared to share)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{c-disadvantages}{%
+\subsubsection{C++ Disadvantages}\label{c-disadvantages}}
+
+Some people say:
+
+\begin{itemize}
+\tightlist
+\item
+  Compiled language
+
+  \begin{itemize}
+  \tightlist
+  \item
+    (compiler versions, libraries, platform specific etc)
+  \end{itemize}
+\item
+  Perceived as difficult, error prone, wordy, unfriendly syntax
+\item
+  Result: It's more trouble than its worth?
+\end{itemize}
+
+\hypertarget{c-advantages}{%
+\subsubsection{C++ Advantages}\label{c-advantages}}
+
+\begin{itemize}
+\tightlist
+\item
+  Fast, code compiled to machine code
+\item
+  Stable, evolving standard, powerful notation, improving
+\item
+  Lots of libraries, Boost, Qt, VTK, ITK etc.
+\item
+  Nice integration with CUDA, OpenACC, OpenCL, OpenMP, OpenMPI
+\item
+  Result: Good reasons to use it, or you may \emph{have} to use it
+\end{itemize}
+
+\hypertarget{research-programming}{%
+\subsubsection{Research Programming}\label{research-programming}}
+
+\begin{itemize}
+\tightlist
+\item
+  Software is always expensive
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Famous Book:
+    \href{http://www.amazon.co.uk/Mythical-Man-month-Essays-Software-Engineering/dp/0201835959/ref=sr_1_1?ie=UTF8\&qid=1452507457\&sr=8-1\&keywords=mythical+man+month}{Mythical
+    Man Month}
+  \end{itemize}
+\item
+  Research programming is different to product development:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What is the end product?
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{development-methodology}{%
+\subsubsection{Development Methodology?}\label{development-methodology}}
+
+\begin{itemize}
+\tightlist
+\item
+  Will software engineering methods help?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://en.wikipedia.org/wiki/Waterfall_model}{Waterfall}
+  \item
+    \href{https://en.wikipedia.org/wiki/Agile_software_development}{Agile}
+  \end{itemize}
+\item
+  At the `concept discovery' stage, probably too early to talk about
+  product development
+\end{itemize}
+
+\hypertarget{approach}{%
+\subsubsection{Approach}\label{approach}}
+
+\begin{itemize}
+\tightlist
+\item
+  What am I trying to achieve?
+\item
+  How do I maximise my research output?
+\item
+  What is the best pathway to success?
+\item
+  How do I de-risk (get results, meet deadlines) my research?
+\item
+  Software is an important part of scientific reproducibility,
+  authorship, credibility.
+\end{itemize}
+
+\hypertarget{types-of-code}{%
+\subsubsection{1. Types of Code}\label{types-of-code}}
+
+\begin{itemize}
+\tightlist
+\item
+  What are you trying to achieve?
+\item
+  Divide code:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Your algorithm
+  \item
+    Testing code
+  \item
+    Data analysis
+  \item
+    User Interface
+  \item
+    Glue code
+  \item
+    Deployment code
+  \item
+    Scientific output (a paper)
+  \end{itemize}
+\end{itemize}
+
+Question: What type of code is C++ good for? Question: Should all code
+be in C++?
+
+\hypertarget{maximise-your-value}{%
+\subsubsection{2. Maximise Your Value}\label{maximise-your-value}}
+
+\begin{itemize}
+\tightlist
+\item
+  Developer time is expensive
+\item
+  Your brain is your asset
+\item
+  Write as little code as possible
+\item
+  Focus tightly on your hypothesis
+\item
+  Write the minimum code that produces a paper
+\end{itemize}
+
+Don't fall into the trap ``Hey, I'll write a framework for that''
+
+\hypertarget{ask-advice}{%
+\subsubsection{3. Ask Advice}\label{ask-advice}}
+
+\begin{itemize}
+\tightlist
+\item
+  Before contemplating a new piece of software
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Ask advice - \href{https://ucl-programming-hub.slack.com/}{Slack
+    Channel}
+  \item
+    Review libraries and use them.
+  \item
+    Check libraries are suitable, and sustainable.
+  \item
+    Read
+    \href{http://development.rc.ucl.ac.uk/training/engineering/ch04packaging/01Libraries.html}{Libraries}
+    section from
+    \href{http://github-pages.ucl.ac.uk/rsd-engineeringcourse/}{Software
+    Engineering} course
+  \item
+    Ask about best practices
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{debunking-the-excuses}{%
+\subsubsection{Debunking The Excuses}\label{debunking-the-excuses}}
+
+\begin{itemize}
+\tightlist
+\item
+  I'm not a software engineer
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Learn effective, minimal tools
+  \end{itemize}
+\item
+  I don't have time
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Unit testing to save time
+  \item
+    Choose your battles/languages wisely
+  \end{itemize}
+\item
+  I'm unsure of my code
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Share, collaborate
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{what-isnt-this-course}{%
+\subsubsection{What Isn't This Course?}\label{what-isnt-this-course}}
+
+We are NOT suggesting that:
+
+\begin{itemize}
+\tightlist
+\item
+  C++ is the solution to all problems.
+\item
+  You should write all parts of your code in C++.
+\end{itemize}
+
+\hypertarget{what-is-this-course}{%
+\subsubsection{What Is This Course?}\label{what-is-this-course}}
+
+We aim to:
+
+\begin{itemize}
+\tightlist
+\item
+  Improve your C++ (and associated technologies).
+\item
+  Introduction to High Performance Computing (HPC).
+\end{itemize}
+
+So that:
+
+\begin{itemize}
+\tightlist
+\item
+  Apply it to research in a pragmatic fashion.
+\item
+  You use the right tool for the job.
+\end{itemize}
+
+\hypertarget{cmake-basics}{%
+\subsection{CMake Basics}\label{cmake-basics}}
+
+\hypertarget{compiling-basics}{%
+\subsubsection{Compiling Basics}\label{compiling-basics}}
+
+Question: How does a compiler work?
+
+\hypertarget{how-does-a-compiler-work}{%
+\subsubsection{How does a Compiler
+Work?}\label{how-does-a-compiler-work}}
+
+Question: How does a compiler work?
+
+\begin{itemize}
+\tightlist
+\item
+  (Don't quote any of this in a compiler theory course!)
+\item
+  Preprocessing .cpp/.cxx into pure source files
+\item
+  Source files compiled, one by one into .o/.obj
+\item
+  executable compiled to .o/.obj
+\item
+  executable linked against all .o, and all libraries
+\end{itemize}
+
+That's what you are trying to describe in CMake.
+
+\hypertarget{cmake---directory-structure}{%
+\subsubsection{CMake - Directory
+Structure}\label{cmake---directory-structure}}
+
+\begin{itemize}
+\tightlist
+\item
+  CMake starts with top-level CMakeLists.txt
+\item
+  CMakeLists.txt is read top-to-bottom
+\item
+  All CMake code goes in CMakeLists.txt or files included from a
+  CMakeLists.txt
+\item
+  You can sub-divide your code into separate folders.
+\item
+  If you \texttt{add\_subdirectory}, CMake will go into that directory
+  and start to process the CMakeLists.txt therein. Once finished it will
+  exit, go back to directory above and continue where it left off.
+\item
+  e.g.~top level CMakeLists.txt
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{project}\NormalTok{(MYPROJECT }\OtherTok{VERSION}\NormalTok{ 0.0.0)}
+\KeywordTok{add_subdirectory}\NormalTok{(Code)}
+\KeywordTok{if}\NormalTok{(}\DecValTok{BUILD_TESTING}\NormalTok{)}
+  \KeywordTok{set}\NormalTok{()}
+  \KeywordTok{include}\NormalTok{_directories()}
+  \KeywordTok{add_subdirectory}\NormalTok{(Testing)}
+\KeywordTok{endif}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{cmake---define-targets}{%
+\subsubsection{CMake - Define Targets}\label{cmake---define-targets}}
+
+\begin{itemize}
+\tightlist
+\item
+  Describe a target, e.g.~Library, Application, Plugin
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{add_executable}\NormalTok{(hello hello.cpp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Note: You don't write compile commands
+\item
+  You tell CMake what things need compiling to build a given target.
+  CMake works out the compile commands!
+\end{itemize}
+
+\hypertarget{cmake---order-dependent}{%
+\subsubsection{CMake - Order Dependent}\label{cmake---order-dependent}}
+
+\begin{itemize}
+\tightlist
+\item
+  You can't say ``build Y and link to X'' if X not defined
+\item
+  So, imagine in a larger project
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{add_library}\NormalTok{(libA a.cpp b.cpp c.cpp)}
+\KeywordTok{add_library}\NormalTok{(libZ x.cpp y.cpp z.cpp)}
+\KeywordTok{target_link_libraries}\NormalTok{(libZ libA)}
+\KeywordTok{add_executable}\NormalTok{(myAlgorithm algo.cpp) }\CommentTok{# contains main()}
+\KeywordTok{target_link_libraries}\NormalTok{(myAlgorithm libA libZ }\DecValTok{$\{}\NormalTok{THIRD_PARTY_LIBS}\DecValTok{\}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  So, logically, its a big, ordered set of build commands.
+\end{itemize}
+
+\hypertarget{homework---4}{%
+\subsubsection{Homework - 4}\label{homework---4}}
+
+\begin{itemize}
+\tightlist
+\item
+  Build https://github.com/MattClarkson/CMakeLibraryAndApp.git
+\item
+  Look through .cpp/.h code. Ask questions if you don't understand it.
+\item
+  What is an ``include guard''?
+\item
+  What is a namespace?
+\item
+  Look at .travis.yml and appveyor.yml - cross platform testing, free
+  for open-source
+\item
+  Look at myApp.cpp, does it make sense?
+\item
+  Look at CMakeLists.txt, does it make sense?
+\item
+  Look for examples on the web,
+  e.g.~\href{https://lorensen.github.io/VTKExamples/site/Cxx/GeometricObjects/Cone/}{VTK}
+\end{itemize}
+
+\hypertarget{cmake}{%
+\subsection{CMake}\label{cmake}}
+
+\hypertarget{ever-worked-in-industry}{%
+\subsubsection{Ever worked in Industry?}\label{ever-worked-in-industry}}
+
+\begin{itemize}
+\tightlist
+\item
+  (0-3yrs) Junior Developer - given environment, team support
+\item
+  (4-6yrs) Senior Developer - given environment, leading team
+\item
+  (7+ years) Architect - chose tools, environment, design code
+\item
+  Only cross-platform if product/business demands it
+\item
+  All developers told to use the given platform no choice
+\end{itemize}
+
+\hypertarget{ever-worked-in-research}{%
+\subsubsection{Ever worked in Research?}\label{ever-worked-in-research}}
+
+\begin{itemize}
+\tightlist
+\item
+  All prototyping, no scope
+\item
+  Start from scratch, little support
+\item
+  No end product, no nice examples
+\item
+  Cutting edge use of maths/science/technology
+\item
+  Share with others on other platforms
+\item
+  Develop on Windows, run on cluster (Linux)
+\end{itemize}
+
+\hypertarget{research-software-engineering-dilemma}{%
+\subsubsection{Research Software Engineering
+Dilemma}\label{research-software-engineering-dilemma}}
+
+\begin{itemize}
+\tightlist
+\item
+  Comparing Research with Industry, in Research you have:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Least experienced developers
+  \item
+    with the least support
+  \item
+    developing cross-platform
+  \item
+    No clear specification or scope
+  \end{itemize}
+\item
+  Struggle of C++ is often not the language its the environment
+\end{itemize}
+
+\hypertarget{build-environment}{%
+\subsubsection{Build Environment}\label{build-environment}}
+
+\begin{itemize}
+\tightlist
+\item
+  Windows: Visual Studio solution files
+\item
+  Linux: Makefiles
+\item
+  Mac: XCode projects / Makefiles
+\end{itemize}
+
+Question: How was your last project built?
+
+\hypertarget{cmake-introduction}{%
+\subsubsection{CMake Introduction}\label{cmake-introduction}}
+
+\begin{itemize}
+\tightlist
+\item
+  This is a practical course
+\item
+  We will use CMake as a build tool
+\item
+  CMake produces
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Windows: Visual Studio project files
+  \item
+    Linux: Make files
+  \item
+    Mac: XCode projects, Make files
+  \end{itemize}
+\item
+  So you write 1 build language (CMake) and run on multi-platform.
+\item
+  This course will provide most CMake code and boiler plate code for
+  you, so we can focus more on C++. But you are expected to google CMake
+  issues and work with CMake.
+\end{itemize}
+
+\hypertarget{cmake-usage-linuxmac}{%
+\subsubsection{CMake Usage Linux/Mac}\label{cmake-usage-linuxmac}}
+
+Demo an ``out-of-source'' build
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mkdir}\NormalTok{ cmake_demo}
+\BuiltInTok{cd}\NormalTok{ cmake_demo}
+\FunctionTok{git}\NormalTok{ clone https://github.com/MattClarkson/CMakeHelloWorld}
+\BuiltInTok{cd}\NormalTok{ CMakeHelloWorld}
+\FunctionTok{mkdir}\NormalTok{ build}
+\BuiltInTok{cd}\NormalTok{ build}
+\FunctionTok{cmake}\NormalTok{ ..}
+\FunctionTok{make}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{homework---2}{%
+\subsubsection{Homework - 2}\label{homework---2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Build https://github.com/MattClarkson/CMakeHelloWorld.git
+\item
+  Ensure you do ``out-of-source'' builds
+\item
+  Use CMake to configure separate Debug and Release versions
+\item
+  Add code to hello.cpp:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    On Linux/Mac re-compile just using make
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework---3}{%
+\subsubsection{Homework - 3}\label{homework---3}}
+
+\begin{itemize}
+\tightlist
+\item
+  Build https://github.com/MattClarkson/CMakeHelloWorld.git
+\item
+  Exit all code editors
+\item
+  Rename hello.cpp
+\item
+  Change CMakeLists.txt accordingly
+\item
+  Notice: The executable name and .cpp file name can be different
+\item
+  In your build folder, just try rebuilding.
+\item
+  You should see that CMake is re-triggered, so you get a cmake/compile
+  cycle.
+\end{itemize}
+
+\hypertarget{lecture-1-c-for-research}{%
+\section{Lecture 1: C++ for Research}\label{lecture-1-c-for-research}}
+
+\hypertarget{course-overview}{%
+\subsection{Course Overview}\label{course-overview}}
+
+\hypertarget{part-1}{%
+\subsubsection{Part 1}\label{part-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Using C++ in research
+\item
+  Better C++
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Reliable
+  \item
+    Reproducible
+  \item
+    Good science
+  \item
+    Libraries
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{part-2}{%
+\subsubsection{Part 2}\label{part-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  HPC concepts
+\item
+  Shared memory parallelism - \href{http://www.openmp.org}{OpenMP}
+\item
+  Distributed memory parallelism - \href{http://www.open-mpi.org}{MPI}
+\end{itemize}
+
+\hypertarget{course-aims}{%
+\subsubsection{Course Aims}\label{course-aims}}
+
+\begin{itemize}
+\tightlist
+\item
+  Teach how to do research with C++
+\item
+  Optimise your research output
+\item
+  A taster for various technologies
+\item
+  Not just C++ syntax, Google/Compiler could tell you that!
+\end{itemize}
+
+\hypertarget{pre-requisites}{%
+\subsubsection{Pre-requisites}\label{pre-requisites}}
+
+\begin{itemize}
+\tightlist
+\item
+  Use of command line (Unix) shell
+\item
+  You are already doing some C++
+\item
+  You are familiar with your compiler
+\item
+  (Maybe) You are happy with the concept of classes
+\item
+  (Maybe) You know C++ up to templates?
+\item
+  You are familiar with development eg. version control
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Git: \url{https://git-scm.com/}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{course-notes}{%
+\subsubsection{Course Notes}\label{course-notes}}
+
+\begin{itemize}
+\tightlist
+\item
+  Revise some software Engineering:
+  \href{http://github-pages.ucl.ac.uk/rsd-engineeringcourse/}{MPHY0021}
+\item
+  Register with Moodle: \href{https://moodle.ucl.ac.uk/}{PHAS0100}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    contact lecturer for key to self-register
+  \item
+    guest key to look around is ``996135''
+  \end{itemize}
+\item
+  Online notes:
+  \href{http://rits.github-pages.ucl.ac.uk/research-computing-with-cpp/}{PHAS0100}
+\end{itemize}
+
+\hypertarget{course-assessment}{%
+\subsubsection{Course Assessment}\label{course-assessment}}
+
+\begin{itemize}
+\tightlist
+\item
+  2 pieces coursework - 40 hours each
+
+  \begin{itemize}
+  \tightlist
+  \item
+    See assessment section for details
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{course-community}{%
+\subsubsection{Course Community}\label{course-community}}
+
+\begin{itemize}
+\tightlist
+\item
+  UCL Research Programming Hub:
+  \href{http://research-programming.ucl.ac.uk/}{http://research-programming.ucl.ac.uk}
+\item
+  Slack:
+  \href{https://ucl-programming-hub.slack.com/}{https://ucl-programming-hub.slack.com}
+\end{itemize}
+
+\hypertarget{intermediate-cmake}{%
+\subsection{Intermediate CMake}\label{intermediate-cmake}}
+
+\hypertarget{whats-next}{%
+\subsubsection{What's next?}\label{whats-next}}
+
+\begin{itemize}
+\tightlist
+\item
+  Most people learn CMake by pasting snippets from around the web
+\item
+  As project gets larger, its more complex
+\item
+  Researchers tend to just ``stick with what they have.''
+\item
+  i.e.~just keep piling more code into the same file.
+\item
+  Want to show you a reasonable template project.
+\end{itemize}
+
+\hypertarget{homework---5}{%
+\subsubsection{Homework - 5}\label{homework---5}}
+
+\begin{itemize}
+\tightlist
+\item
+  Build https://github.com/MattClarkson/CMakeCatch2.git
+\item
+  If open-source, use travis and appveyor from day 1.
+\item
+  We will go through top-level CMakeLists.txt in class.
+\item
+  See separate \texttt{Code} and \texttt{Testing} folders
+\item
+  Separate \texttt{Lib} and \texttt{CommandLineApps} and
+  \texttt{3rdParty}
+\item
+  You should focus on
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Write a good library
+  \item
+    Unit test it
+  \item
+    Then it can be called from command line, wrapped in Python, used via
+    GUI.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework---6}{%
+\subsubsection{Homework - 6}\label{homework---6}}
+
+\begin{itemize}
+\tightlist
+\item
+  Try renaming stuff to create a library of your choice.
+\item
+  Create a github account, github repo, Appveyor and Travis account
+\item
+  Try to get your code running on 3 platforms
+\item
+  If you can, consider using this repo for your research
+\item
+  Discuss
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Debug / Release builds
+  \item
+    Static versus Dynamic
+  \item
+    declspec import/export
+  \item
+    Issues with running command line app? Windows/Linux/Mac
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{looking-forward}{%
+\subsubsection{Looking forward}\label{looking-forward}}
+
+In the remainder of this course we cover
+
+\begin{itemize}
+\tightlist
+\item
+  Some compiler options
+\item
+  Using libraries
+\item
+  Including libraries in CMake
+\item
+  Unit testing
+\item
+  i.e.~How to put together a C++ project
+\item
+  in addition to actual C++ and HPC
+\end{itemize}
+
+\hypertarget{unit-testing}{%
+\subsection{Unit Testing}\label{unit-testing}}
+
+\hypertarget{what-is-unit-testing}{%
+\subsubsection{What is Unit Testing?}\label{what-is-unit-testing}}
+
+At a high level
+
+\begin{itemize}
+\tightlist
+\item
+  Way of testing code.
+\item
+  Unit
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Smallest `atomic' chunk of code
+  \item
+    i.e.~Function, could be a Class
+  \end{itemize}
+\item
+  See also:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Integration/System Testing
+  \item
+    Regression Testing
+  \item
+    User Acceptance Testing
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{benefits-of-unit-testing}{%
+\subsubsection{Benefits of Unit
+Testing?}\label{benefits-of-unit-testing}}
+
+\begin{itemize}
+\tightlist
+\item
+  Certainty of correctness
+\item
+  (Scientific Rigour)
+\item
+  Influences and improves design
+\item
+  Confidence to refactor, improve
+\end{itemize}
+
+\hypertarget{drawbacks-for-unit-testing}{%
+\subsubsection{Drawbacks for Unit
+Testing?}\label{drawbacks-for-unit-testing}}
+
+\begin{itemize}
+\tightlist
+\item
+  Don't know how
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This course will help
+  \end{itemize}
+\item
+  Takes too much time
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Really?
+  \item
+    IT SAVES TIME in the long run
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{unit-testing-frameworks}{%
+\subsubsection{Unit Testing Frameworks}\label{unit-testing-frameworks}}
+
+Generally, all very similar
+
+\begin{itemize}
+\tightlist
+\item
+  JUnit (Java), NUnit (.net?), CppUnit, phpUnit,
+\item
+  Basically
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Macros (C++), methods (Java) to test conditions
+  \item
+    Macros (C++), reflection (Java) to run/discover tests
+  \item
+    Ways of looking at results.
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Java/Eclipse: Integrated with IDE
+    \item
+      Log file or standard output
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{unit-testing-example}{%
+\subsection{Unit Testing Example}\label{unit-testing-example}}
+
+\hypertarget{how-to-start}{%
+\subsubsection{How To Start}\label{how-to-start}}
+
+We discuss
+
+\begin{itemize}
+\tightlist
+\item
+  Basic Example
+\item
+  Some tips
+\end{itemize}
+
+Then its down to the developer/artist.
+
+\hypertarget{c-frameworks}{%
+\subsubsection{C++ Frameworks}\label{c-frameworks}}
+
+To Consider:
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/philsquared/Catch}{Catch}
+\item
+  \href{https://code.google.com/p/googletest/}{GoogleTest}
+\item
+  \href{http://qt-project.org/doc/qt-4.8/qtestlib-manual.html}{QTestLib}
+\item
+  \href{http://www.boost.org/doc/libs/1_57_0/libs/test/doc/html/index.html}{BoostTest}
+\item
+  \href{http://cpptest.sourceforge.net/}{CppTest}
+\item
+  \href{http://sourceforge.net/projects/cppunit/}{CppUnit}
+\end{itemize}
+
+\hypertarget{worked-example}{%
+\subsubsection{Worked Example}\label{worked-example}}
+
+\begin{itemize}
+\tightlist
+\item
+  Borrowed from
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://github.com/philsquared/Catch/blob/master/docs/tutorial.md}{Catch
+    Tutorial}
+  \item
+    and
+    \href{https://code.google.com/p/googletest/wiki/V1_7_Primer}{Googletest
+    Primer}
+  \end{itemize}
+\item
+  We use \href{https://github.com/philsquared/Catch}{Catch}, so notes
+  are compilable
+\item
+  But the concepts are the same
+\end{itemize}
+
+\hypertarget{code}{%
+\subsubsection{Code}\label{code}}
+
+To keep it simple for now we do this in one file:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#define CATCH_CONFIG_MAIN  }\CommentTok{// This tells Catch to provide a main() - only do this in one cpp file}
+\PreprocessorTok{#include }\ImportTok{"../catch/catch.hpp"}
+
+\DataTypeTok{unsigned} \DataTypeTok{int}\NormalTok{ Factorial( }\DataTypeTok{unsigned} \DataTypeTok{int}\NormalTok{ number ) \{}
+    \ControlFlowTok{return}\NormalTok{ number <= }\DecValTok{1}\NormalTok{ ? number : Factorial(number-}\DecValTok{1}\NormalTok{)*number;}
+\NormalTok{\}}
+
+\NormalTok{TEST_CASE( }\StringTok{"Factorials are computed"}\NormalTok{, }\StringTok{"[factorial]"}\NormalTok{ ) \{}
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{1}\NormalTok{) == }\DecValTok{1}\NormalTok{ );}
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{2}\NormalTok{) == }\DecValTok{2}\NormalTok{ );}
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{3}\NormalTok{) == }\DecValTok{6}\NormalTok{ );}
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{10}\NormalTok{) == }\DecValTok{3628800}\NormalTok{ );}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Produces this output when run:
+
+\begin{verbatim}
+===============================================================================
+All tests passed (4 assertions in 1 test case)
+
+\end{verbatim}
+
+\hypertarget{principles}{%
+\subsubsection{Principles}\label{principles}}
+
+So, typically we have
+
+\begin{itemize}
+\tightlist
+\item
+  Some \texttt{\#include} to get test framework
+\item
+  Our code that we want to test
+\item
+  Then make some assertions
+\end{itemize}
+
+\hypertarget{catch-googletest}{%
+\subsubsection{Catch / GoogleTest}\label{catch-googletest}}
+
+For example, in \href{https://github.com/philsquared/Catch}{Catch}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \CommentTok{// TEST_CASE(<unique test name>, <test case name>)}
+\NormalTok{    TEST_CASE( }\StringTok{"Factorials are computed"}\NormalTok{, }\StringTok{"[factorial]"}\NormalTok{ ) \{}
+\NormalTok{        REQUIRE( Factorial(}\DecValTok{2}\NormalTok{) == }\DecValTok{2}\NormalTok{ );}
+\NormalTok{        REQUIRE( Factorial(}\DecValTok{3}\NormalTok{) == }\DecValTok{6}\NormalTok{ );}
+\NormalTok{    \}}
+\end{Highlighting}
+\end{Shaded}
+
+In \href{https://code.google.com/p/googletest/}{GoogleTest}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \CommentTok{// }\AlertTok{TEST}\CommentTok{(<test case name>, <unique test name>)}
+\NormalTok{    TEST(FactorialTest, HandlesPositiveInput) \{}
+\NormalTok{      EXPECT_EQ(}\DecValTok{2}\NormalTok{, Factorial(}\DecValTok{2}\NormalTok{));}
+\NormalTok{      EXPECT_EQ(}\DecValTok{6}\NormalTok{, Factorial(}\DecValTok{3}\NormalTok{));}
+\NormalTok{    \}}
+\end{Highlighting}
+\end{Shaded}
+
+all done via C++ macros.
+
+\hypertarget{tests-that-fail}{%
+\subsubsection{Tests That Fail}\label{tests-that-fail}}
+
+What about Factorial of zero? Adding
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{0}\NormalTok{) == }\DecValTok{1}\NormalTok{ );}
+\end{Highlighting}
+\end{Shaded}
+
+Produces something like:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    factorial2.cc:}\DecValTok{9}\NormalTok{: FAILED:}
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{0}\NormalTok{) == }\DecValTok{1}\NormalTok{ )}
+\NormalTok{    with expansion:}
+    \DecValTok{0}\NormalTok{ == }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{fix-the-failing-test}{%
+\subsubsection{Fix the Failing Test}\label{fix-the-failing-test}}
+
+Leading to:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#define CATCH_CONFIG_MAIN  }\CommentTok{// This tells Catch to provide a main() - only do this in one cpp file}
+\PreprocessorTok{#include }\ImportTok{"../catch/catch.hpp"}
+
+\DataTypeTok{unsigned} \DataTypeTok{int}\NormalTok{ Factorial( }\DataTypeTok{unsigned} \DataTypeTok{int}\NormalTok{ number ) \{}
+    \CommentTok{//return number <= 1 ? number : Factorial(number-1)*number;}
+    \ControlFlowTok{return}\NormalTok{ number > }\DecValTok{1}\NormalTok{ ? Factorial(number-}\DecValTok{1}\NormalTok{)*number : }\DecValTok{1}\NormalTok{;}
+\NormalTok{\}}
+
+\NormalTok{TEST_CASE( }\StringTok{"Factorials are computed"}\NormalTok{, }\StringTok{"[factorial]"}\NormalTok{ ) \{}
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{0}\NormalTok{) == }\DecValTok{1}\NormalTok{ );}
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{1}\NormalTok{) == }\DecValTok{1}\NormalTok{ );}
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{2}\NormalTok{) == }\DecValTok{2}\NormalTok{ );}
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{3}\NormalTok{) == }\DecValTok{6}\NormalTok{ );}
+\NormalTok{    REQUIRE( Factorial(}\DecValTok{10}\NormalTok{) == }\DecValTok{3628800}\NormalTok{ );}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+which passes:
+
+\begin{verbatim}
+===============================================================================
+All tests passed (5 assertions in 1 test case)
+
+\end{verbatim}
+
+\hypertarget{test-macros}{%
+\subsubsection{Test Macros}\label{test-macros}}
+
+Each framework has a variety of macros to test for failure.
+\href{https://github.com/philsquared/Catch}{Catch} has:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    REQUIRE(expression); }\CommentTok{// stop if fail}
+\NormalTok{    CHECK(expression);   }\CommentTok{// doesn't stop if fails}
+\end{Highlighting}
+\end{Shaded}
+
+If an exception is thrown, it's caught, reported and counts as a
+failure.
+
+Examples:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    CHECK( str == }\StringTok{"string value"}\NormalTok{ );}
+\NormalTok{    CHECK( thisReturnsTrue() );}
+\NormalTok{    REQUIRE( i == }\DecValTok{42}\NormalTok{ );}
+\end{Highlighting}
+\end{Shaded}
+
+Others:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    REQUIRE_FALSE( expression )}
+\NormalTok{    CHECK_FALSE( expression )}
+\NormalTok{    REQUIRE_THROWS( expression ) }\ErrorTok{# Must throw an exception}
+\NormalTok{    CHECK_THROWS( expression ) }\ErrorTok{# Must throw an exception, and continue testing}
+\NormalTok{    REQUIRE_THROWS_AS( expression, exception type )}
+\NormalTok{    CHECK_THROWS_AS( expression, exception type )}
+\NormalTok{    REQUIRE_NOTHROW( expression )}
+\NormalTok{    CHECK_NOTHROW( expression )}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{testing-for-failure}{%
+\subsubsection{Testing for Failure}\label{testing-for-failure}}
+
+To re-iterate:
+
+\begin{itemize}
+\tightlist
+\item
+  You should test failure cases
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Force a failure
+  \item
+    Check that exception is thrown
+  \item
+    If exception is thrown, test passes
+  \item
+    (Some people get confused, expecting test to fail)
+  \end{itemize}
+\item
+  Examples
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Saving to invalid file name
+  \item
+    Negative numbers passed into double arguments
+  \item
+    Invalid Physical quantities (e.g.~-300 Kelvin)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{setuptear-down}{%
+\subsubsection{Setup/Tear Down}\label{setuptear-down}}
+
+\begin{itemize}
+\tightlist
+\item
+  Some tests require objects to exist in memory
+\item
+  These should be set up
+
+  \begin{itemize}
+  \tightlist
+  \item
+    for each test
+  \item
+    for a group of tests
+  \end{itemize}
+\item
+  Frameworks do differ in this regards
+\end{itemize}
+
+\hypertarget{setuptear-down-in-catch}{%
+\subsubsection{Setup/Tear Down in Catch}\label{setuptear-down-in-catch}}
+
+Referring to the
+\href{https://github.com/philsquared/Catch/blob/master/docs/tutorial.md}{Catch
+Tutorial}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TEST_CASE( }\StringTok{"vectors can be sized and resized"}\NormalTok{, }\StringTok{"[vector]"}\NormalTok{ ) \{}
+
+    \BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{int}\NormalTok{> v( }\DecValTok{5}\NormalTok{ );}
+
+\NormalTok{    REQUIRE( v.size() == }\DecValTok{5}\NormalTok{ );}
+\NormalTok{    REQUIRE( v.capacity() >= }\DecValTok{5}\NormalTok{ );}
+
+\NormalTok{    SECTION( }\StringTok{"resizing bigger changes size and capacity"}\NormalTok{ ) \{}
+\NormalTok{        v.resize( }\DecValTok{10}\NormalTok{ );}
+
+\NormalTok{        REQUIRE( v.size() == }\DecValTok{10}\NormalTok{ );}
+\NormalTok{        REQUIRE( v.capacity() >= }\DecValTok{10}\NormalTok{ );}
+\NormalTok{    \}}
+\NormalTok{    SECTION( }\StringTok{"resizing smaller changes size but not capacity"}\NormalTok{ ) \{}
+\NormalTok{        v.resize( }\DecValTok{0}\NormalTok{ );}
+
+\NormalTok{        REQUIRE( v.size() == }\DecValTok{0}\NormalTok{ );}
+\NormalTok{        REQUIRE( v.capacity() >= }\DecValTok{5}\NormalTok{ );}
+\NormalTok{    \}}
+\NormalTok{    SECTION( }\StringTok{"reserving bigger changes capacity but not size"}\NormalTok{ ) \{}
+\NormalTok{        v.reserve( }\DecValTok{10}\NormalTok{ );}
+
+\NormalTok{        REQUIRE( v.size() == }\DecValTok{5}\NormalTok{ );}
+\NormalTok{        REQUIRE( v.capacity() >= }\DecValTok{10}\NormalTok{ );}
+\NormalTok{    \}}
+\NormalTok{    SECTION( }\StringTok{"reserving smaller does not change size or capacity"}\NormalTok{ ) \{}
+\NormalTok{        v.reserve( }\DecValTok{0}\NormalTok{ );}
+
+\NormalTok{        REQUIRE( v.size() == }\DecValTok{5}\NormalTok{ );}
+\NormalTok{        REQUIRE( v.capacity() >= }\DecValTok{5}\NormalTok{ );}
+\NormalTok{    \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+So, Setup/Tear down is done before/after each section.
+
+\hypertarget{unit-testing-tips}{%
+\subsection{Unit Testing Tips}\label{unit-testing-tips}}
+
+\hypertarget{c-design}{%
+\subsubsection{C++ design}\label{c-design}}
+
+\begin{itemize}
+\tightlist
+\item
+  Stuff from above applies to Classes / Functions
+\item
+  Think about arguments:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Code should be hard to use incorrectly.
+  \item
+    Use \texttt{const}, \texttt{unsigned} etc.
+  \item
+    Testing forces you to sort these out.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{test-driven-development-tdd}{%
+\subsubsection{Test Driven Development
+(TDD)}\label{test-driven-development-tdd}}
+
+\begin{itemize}
+\tightlist
+\item
+  Methodology
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    Write a test
+  \item
+    Run test, should fail
+  \item
+    Implement/Debug functionality
+  \item
+    Run test
+
+    \begin{enumerate}
+    \def\labelenumii{\arabic{enumii}.}
+    \tightlist
+    \item
+      if succeed goto 5
+    \item
+      else goto 3
+    \end{enumerate}
+  \item
+    Refactor to tidy up
+  \end{enumerate}
+\end{itemize}
+
+\hypertarget{tdd-in-practice}{%
+\subsubsection{TDD in practice}\label{tdd-in-practice}}
+
+\begin{itemize}
+\tightlist
+\item
+  Aim to get good coverage
+\item
+  Some people quote 70\% or more
+\item
+  What are the downsides?
+\item
+  Don't write `brittle' tests
+\end{itemize}
+
+\hypertarget{behaviour-driven-development-bdd}{%
+\subsubsection{Behaviour Driven Development
+(BDD)}\label{behaviour-driven-development-bdd}}
+
+\begin{itemize}
+\tightlist
+\item
+  Behaviour Driven Development (BDD)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Refers to a
+    \href{https://en.wikipedia.org/wiki/Behavior-driven_development}{whole
+    area} of software engineering
+  \item
+    With associated tools and practices
+  \item
+    Think about end-user perspective
+  \item
+    Think about the desired behaviour not the implementation
+  \item
+    See
+    \href{https://codeutopia.net/blog/2015/03/01/unit-testing-tdd-and-bdd/}{Jani
+    Hartikainen} article.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{tdd-vs-bdd}{%
+\subsubsection{TDD Vs BDD}\label{tdd-vs-bdd}}
+
+\begin{itemize}
+\tightlist
+\item
+  TDD
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Test/Design based on methods available
+  \item
+    Often ties in implementation details
+  \end{itemize}
+\item
+  BDD
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Test/Design based on behaviour\\
+  \item
+    Code to interfaces (later in course)
+  \end{itemize}
+\item
+  Subtly different
+\item
+  Aim for BDD
+\end{itemize}
+
+\hypertarget{anti-pattern-1-settersgetters}{%
+\subsubsection{Anti-Pattern 1:
+Setters/Getters}\label{anti-pattern-1-settersgetters}}
+
+Testing every Setter/Getter.
+
+Consider:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \KeywordTok{class}\NormalTok{ Atom \{}
+
+     \KeywordTok{public}\NormalTok{:}
+       \DataTypeTok{void}\NormalTok{ SetAtomicNumber(}\AttributeTok{const} \DataTypeTok{int}\NormalTok{& number) \{ }\VariableTok{m_AtomicNumber}\NormalTok{ = number; \}}
+       \DataTypeTok{int}\NormalTok{ GetAtomicNumber() }\AttributeTok{const}\NormalTok{ \{ }\ControlFlowTok{return} \VariableTok{m_AtomicNumber}\NormalTok{; \}}
+       \DataTypeTok{void}\NormalTok{ SetName(}\AttributeTok{const} \BuiltInTok{std::}\NormalTok{string& name) \{ }\VariableTok{m_Name}\NormalTok{ = name; \}}
+       \BuiltInTok{std::}\NormalTok{string GetName() }\AttributeTok{const}\NormalTok{ \{ }\ControlFlowTok{return} \VariableTok{m_Name}\NormalTok{; \}}
+     \KeywordTok{private}\NormalTok{:}
+       \DataTypeTok{int} \VariableTok{m_AtomicNumber}\NormalTok{;}
+       \BuiltInTok{std::}\NormalTok{string }\VariableTok{m_Name}\NormalTok{;}
+\NormalTok{   \};}
+\end{Highlighting}
+\end{Shaded}
+
+and tests like:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    TEST_CASE( }\StringTok{"Testing Setters/Getters"}\NormalTok{, }\StringTok{"[Atom]"}\NormalTok{ ) \{}
+
+\NormalTok{        Atom a;}
+
+\NormalTok{        a.SetAtomicNumber(}\DecValTok{1}\NormalTok{);}
+\NormalTok{        REQUIRE( a.GetAtomicNumber() == }\DecValTok{1}\NormalTok{);}
+\NormalTok{        a.SetName(}\StringTok{"Hydrogen"}\NormalTok{);}
+\NormalTok{        REQUIRE( a.GetName() == }\StringTok{"Hydrogen"}\NormalTok{);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  It feels tedious
+\item
+  But you want good coverage
+\item
+  This often puts people off testing
+\item
+  It also produces ``brittle'', where 1 change breaks many things
+\end{itemize}
+
+\hypertarget{anti-pattern-1-suggestion.}{%
+\subsubsection{Anti-Pattern 1:
+Suggestion.}\label{anti-pattern-1-suggestion.}}
+
+\begin{itemize}
+\tightlist
+\item
+  Focus on behaviour.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What would end-user expect to be doing?
+  \item
+    How would end-user be using this class?
+  \item
+    Write tests that follow the use-case
+  \item
+    Gives a more logical grouping
+  \item
+    One test can cover \textgreater{} 1 function
+  \item
+    i.e.~move away from slavishly testing each function
+  \end{itemize}
+\item
+  Minimise interface.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Provide the bare number of methods
+  \item
+    Don't provide setters if you don't want them
+  \item
+    Don't provide getters unless the user needs something
+  \item
+    Less to test. Use documentation to describe why.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{anti-pattern-2-constructing-dependent-classes}{%
+\subsubsection{Anti-Pattern 2: Constructing Dependent
+Classes}\label{anti-pattern-2-constructing-dependent-classes}}
+
+\begin{itemize}
+\tightlist
+\item
+  Sometimes, by necessity we test groups of classes
+\item
+  Or one class genuinely Has-A contained class
+\item
+  But the contained class is expensive, or could be changed in future
+\end{itemize}
+
+\hypertarget{anti-pattern-2-suggestion}{%
+\subsubsection{Anti-Pattern 2:
+Suggestion}\label{anti-pattern-2-suggestion}}
+
+\begin{itemize}
+\tightlist
+\item
+  Read up on
+  \href{https://martinfowler.com/articles/injection.html}{Dependency
+  Injection}
+\item
+  Enables you to create and inject dummy test classes
+\item
+  So, testing again used to break down design, and increase flexibility
+\end{itemize}
+
+\hypertarget{summary-bdd-vs-tdd}{%
+\subsubsection{Summary BDD Vs TDD}\label{summary-bdd-vs-tdd}}
+
+Aim to write:
+
+\begin{itemize}
+\tightlist
+\item
+  Most concise description of requirements as unit tests
+\item
+  Smallest amount of code to pass tests
+\item
+  \ldots{} i.e.~based on behaviour
+\end{itemize}
+
+\hypertarget{any-questions}{%
+\subsection{Any Questions?}\label{any-questions}}
+
+\hypertarget{homework---overview}{%
+\subsubsection{Homework - Overview}\label{homework---overview}}
+
+\begin{itemize}
+\tightlist
+\item
+  Example git repo, CMake, Catch template project:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://github.com/MattClarkson/CMakeCatch2}{CMakeCatch2} -
+    Simple
+  \item
+    \href{https://github.com/MattClarkson/CMakeCatchTemplate}{CMakeCatchTemplate}
+    - Complex
+  \end{itemize}
+\item
+  You should
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Clone, Build.
+  \item
+    Add unit test in Testing
+  \item
+    Run via ctest
+  \item
+    Find log file
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework---7}{%
+\subsubsection{Homework - 7}\label{homework---7}}
+
+\begin{itemize}
+\tightlist
+\item
+  Imagine a simple function, e.g.~to add two numbers.
+\item
+  Play with unit tests until you understand the difference between:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ AddTwoNumbers(}\DataTypeTok{int}\NormalTok{ a, }\DataTypeTok{int}\NormalTok{ b);}
+\DataTypeTok{int}\NormalTok{ AddTwoNumbers(}\AttributeTok{const} \DataTypeTok{int}\NormalTok{& a, }\AttributeTok{const} \DataTypeTok{int}\NormalTok{&b);}
+\DataTypeTok{void}\NormalTok{ AddTwoNumbers(}\DataTypeTok{int}\NormalTok{* a, }\DataTypeTok{int}\NormalTok{*b, }\DataTypeTok{int}\NormalTok{* output);}
+\DataTypeTok{void}\NormalTok{ AddTwoNumbers(}\AttributeTok{const} \DataTypeTok{int}\NormalTok{* }\AttributeTok{const}\NormalTok{ a, }\AttributeTok{const} \DataTypeTok{int}\NormalTok{* }\AttributeTok{const}\NormalTok{ b);}
+\end{Highlighting}
+\end{Shaded}
+
+Now imagine, instead of integers, the variables all contained a large
+Image. Which type of function declaration would you use?
+
+\hypertarget{homework---8}{%
+\subsubsection{Homework - 8}\label{homework---8}}
+
+\begin{itemize}
+\tightlist
+\item
+  Write a Fraction class
+\item
+  Write a print function to print nicely formatted fractions
+\item
+  Does the print function live inside or outside of the class?
+\item
+  Write a method \texttt{simplify()} which will simplify the fraction.
+\item
+  Unit test until you have at least got the hang of unit testing
+\item
+  Review your function arguments and return types
+\end{itemize}
+
+\hypertarget{lecture-2-modern-c-1}{%
+\section{Lecture 2: Modern C++ (1)}\label{lecture-2-modern-c-1}}
+
+\hypertarget{lecture-2-overview}{%
+\subsection{Lecture 2: Overview}\label{lecture-2-overview}}
+
+\hypertarget{the-story-so-far}{%
+\subsubsection{The Story So Far}\label{the-story-so-far}}
+
+\begin{itemize}
+\tightlist
+\item
+  Git
+\item
+  CMake
+\item
+  Catch2
+\end{itemize}
+
+\hypertarget{todays-lesson}{%
+\subsubsection{Todays Lesson}\label{todays-lesson}}
+
+\begin{itemize}
+\tightlist
+\item
+  Recap of C++ features
+\item
+  OO concepts:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Encapsulation and data abstraction
+  \item
+    Inheritance
+  \item
+    Polymorphism
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{recap-of-c-features}{%
+\subsection{Recap of C++ features}\label{recap-of-c-features}}
+
+\hypertarget{c-is-evolving}{%
+\subsubsection{C++ is evolving}\label{c-is-evolving}}
+
+\begin{itemize}
+\tightlist
+\item
+  C++98
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Introduced templates
+  \item
+    STL containers and algorithms
+  \item
+    Strings and IO/streams\\
+  \end{itemize}
+\item
+  C++11
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Many new features introduced, feels like a different programming
+    language
+  \item
+    Move semantics
+  \item
+    \texttt{auto}
+  \item
+    Lambda functions
+  \item
+    \texttt{constexpr}
+  \item
+    Smart pointers
+  \item
+    \texttt{std::array}
+  \item
+    Support for multithreading
+  \item
+    Regular expressions
+  \end{itemize}
+\item
+  C++14
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{auto} works in more places
+  \item
+    Generalised lambda functions
+  \item
+    \texttt{std::make\_unique}
+  \item
+    Reader/writer locks
+  \end{itemize}
+\item
+  C++17
+
+  \begin{itemize}
+  \tightlist
+  \item
+    fold expressions
+  \item
+    \texttt{std::any} and \texttt{std::variant}
+  \item
+    The Filesystem library
+  \item
+    and more\ldots{}
+  \end{itemize}
+\end{itemize}
+
+C++ constantly evolving, you don't just learn once and then stop you
+need keep up with language developments. For this course we will be
+using up until C++14.
+
+\hypertarget{some-excercises-using}{%
+\subsubsection{Some excercises using}\label{some-excercises-using}}
+
+\begin{itemize}
+\tightlist
+\item
+  Now some excercises manipulating \texttt{vectors}, using range based
+  for loops and some some algorithms from
+  \texttt{\textless{}algorithm\textgreater{}}.
+\end{itemize}
+
+\hypertarget{homework---9}{%
+\subsubsection{Homework - 9}\label{homework---9}}
+
+\begin{itemize}
+\tightlist
+\item
+  Use \url{https://github.com/MattClarkson/CMakeLibraryAndApp.git} and
+  create a new library to perform various operations on a std::vector
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Using a range base for loop Write a function that prints all the
+    elements on the vector to screen and call this from \texttt{myApp}
+  \item
+    Write a function using a range based for loop that counts the number
+    of elements equal to a value 5
+  \item
+    Now repeat but instead use the \texttt{std::count} algorithm from
+    the \texttt{\textless{}algorithm\textgreater{}} library
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework---10}{%
+\subsubsection{Homework - 10}\label{homework---10}}
+
+\begin{itemize}
+\tightlist
+\item
+  Again using
+  \url{https://github.com/MattClarkson/CMakeLibraryAndApp.git}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Write a function
+    \texttt{add\_elements(vector\textless{}int\textgreater{}\ v,\ int\ val,\ int\ ntimes)}
+    that takes a \texttt{vector\textless{}int\textgreater{}} and appends
+    \texttt{ntimes} new elements with value \texttt{val}\\
+  \item
+    Print contents of the input vector to screen before and after
+    calling the function as well from within the \texttt{add\_elements}
+    function, what is the problem?
+  \item
+    Try passing by reference
+    \texttt{add\_elements(vector\textless{}int\textgreater{}\ \&v,\ ...}
+    instead, does it work now?
+  \item
+    What are the advantages/disadvantages to passing by reference?
+  \item
+    Try passing as a \texttt{const} reference
+    \texttt{add\_elements(const\ vector\textless{}int\textgreater{}\ \&v,\ ...},
+    what happens now and why would you use this?
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{object-oriented-review}{%
+\subsection{Object Oriented Review}\label{object-oriented-review}}
+
+\hypertarget{c-style-programming}{%
+\subsubsection{C-style Programming}\label{c-style-programming}}
+
+\begin{itemize}
+\tightlist
+\item
+  Procedural programming
+\item
+  Pass data to functions
+\end{itemize}
+
+\hypertarget{function-style-example}{%
+\subsubsection{Function-style Example}\label{function-style-example}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\DataTypeTok{double}\NormalTok{ compute_similarity(}\DataTypeTok{double}\NormalTok{ *imag1, }\DataTypeTok{double}\NormalTok{* image2, }\DataTypeTok{double}\NormalTok{ *params)}
+\NormalTok{\{}
+  \CommentTok{// stuff}
+\NormalTok{\}}
+
+\DataTypeTok{double}\NormalTok{ calculate_derivative(}\DataTypeTok{double}\NormalTok{* params)}
+\NormalTok{\{}
+  \CommentTok{// stuff}
+\NormalTok{\}}
+
+\DataTypeTok{double}\NormalTok{ convert_to_decimal(}\DataTypeTok{double}\NormalTok{ numerator, }\DataTypeTok{double}\NormalTok{ denominator)}
+\NormalTok{\{}
+  \CommentTok{// stuff}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{disadvantages}{%
+\subsubsection{Disadvantages}\label{disadvantages}}
+
+\begin{itemize}
+\tightlist
+\item
+  Can get out of hand as program size increases
+\item
+  Can't easily describe relationships between bits of data
+\item
+  Relies on method documentation, function and variable names
+\item
+  Can't easily control/(enforce control of) access to data
+\end{itemize}
+
+\hypertarget{c-struct}{%
+\subsubsection{C Struct}\label{c-struct}}
+
+\begin{itemize}
+\tightlist
+\item
+  So, in C, the struct was invented
+\item
+  Basically a class without methods
+\item
+  This at least provides a logical grouping
+\end{itemize}
+
+\hypertarget{struct-example}{%
+\subsubsection{Struct Example}\label{struct-example}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\KeywordTok{struct}\NormalTok{ Fraction \{}
+  \DataTypeTok{int}\NormalTok{ numerator;}
+  \DataTypeTok{int}\NormalTok{ denominator;}
+\NormalTok{\};}
+
+\DataTypeTok{double}\NormalTok{ convertToDecimal(}\AttributeTok{const}\NormalTok{ Fraction& f)}
+\NormalTok{\{}
+  \ControlFlowTok{return}\NormalTok{ f.numerator/}\KeywordTok{static_cast}\NormalTok{<}\DataTypeTok{double}\NormalTok{>(f.denominator); }
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{c-class}{%
+\subsubsection{C++ Class}\label{c-class}}
+
+\begin{itemize}
+\tightlist
+\item
+  C++ provides the class to enhance the language with user defined types
+\item
+  Once defined, use types as if native to the language
+\end{itemize}
+
+\hypertarget{abstraction}{%
+\subsubsection{Abstraction}\label{abstraction}}
+
+\begin{itemize}
+\tightlist
+\item
+  C++ class mechanism enables you to define a type
+
+  \begin{itemize}
+  \tightlist
+  \item
+    independent of its data
+  \item
+    independent of its implementation
+  \item
+    class defines concept or blueprint
+  \item
+    instantiation creates object
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{abstraction---grady-booch}{%
+\subsubsection{Abstraction - Grady
+Booch}\label{abstraction---grady-booch}}
+
+``An abstraction denotes the essential characteristics of an object that
+distinguish it from all other kinds of objects and thus provide crisply
+defined conceptual boundaries, relative to the perspective of the
+viewer.''
+
+\hypertarget{class-example}{%
+\subsubsection{Class Example}\label{class-example}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Atom \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  Atom()\{\};}
+\NormalTok{  ~Atom()\{\};}
+  \DataTypeTok{int}\NormalTok{ GetAtomicNumber();}
+  \DataTypeTok{double}\NormalTok{ GetAtomicWeight();}
+\NormalTok{\};}
+
+\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{** argv)}
+\NormalTok{\{}
+\NormalTok{  Atom a;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{encapsulation}{%
+\subsubsection{Encapsulation}\label{encapsulation}}
+
+\begin{itemize}
+\tightlist
+\item
+  Encapsulation is:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Bundling together methods and data
+  \item
+    Restricting access, defining public interface
+  \end{itemize}
+\item
+  Describes how you correctly use something
+\end{itemize}
+
+\hypertarget{publicprivateprotected}{%
+\subsubsection{Public/Private/Protected}\label{publicprivateprotected}}
+
+\begin{itemize}
+\tightlist
+\item
+  For class methods/variables:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{private}: only available in this class
+  \item
+    \texttt{protected}: available in this class and derived classes
+  \item
+    \texttt{public}: available to anyone with access to the object
+  \end{itemize}
+\item
+  (public, protected, private inheritance comes later)
+\end{itemize}
+
+\hypertarget{class-example-1}{%
+\subsubsection{Class Example}\label{class-example-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// Defining a User Defined Type.}
+\KeywordTok{class}\NormalTok{ Fraction \{}
+
+\KeywordTok{public}\NormalTok{: }\CommentTok{// access control}
+  \CommentTok{// How to create}
+\NormalTok{  Fraction();}
+\NormalTok{  Fraction(}\AttributeTok{const} \DataTypeTok{int}\NormalTok{ &num, }\AttributeTok{const} \DataTypeTok{int}\NormalTok{ &denom);}
+
+  \CommentTok{// How to destroy}
+\NormalTok{  ~Fraction();}
+
+  \CommentTok{// How to access}
+  \DataTypeTok{int}\NormalTok{ numerator() }\AttributeTok{const}\NormalTok{;}
+  \DataTypeTok{int}\NormalTok{ denominator() }\AttributeTok{const}\NormalTok{;}
+
+  \CommentTok{// What you can do}
+  \AttributeTok{const}\NormalTok{ Fraction }\KeywordTok{operator}\NormalTok{+(}\AttributeTok{const}\NormalTok{ Fraction &another);}
+
+\KeywordTok{private}\NormalTok{: }\CommentTok{// access control}
+  \CommentTok{// The data}
+  \DataTypeTok{int} \VariableTok{m_Numerator}\NormalTok{;}
+  \DataTypeTok{int} \VariableTok{m_Denominator}\NormalTok{;}
+\NormalTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{inheritance}{%
+\subsubsection{Inheritance}\label{inheritance}}
+
+\begin{itemize}
+\tightlist
+\item
+  Used for:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Defining new types based on a common type
+  \end{itemize}
+\item
+  Careful:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Beware - ``Reduce code duplication, less maintenance''
+  \item
+    Types in a hierarchy MUST be related
+  \item
+    Don't over-use inheritance
+  \item
+    We will cover other ways of object re-use
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{class-example-2}{%
+\subsubsection{Class Example}\label{class-example-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{class}\NormalTok{ Shape \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  Shape();}
+  \DataTypeTok{void}\NormalTok{ setVisible(}\AttributeTok{const} \DataTypeTok{bool}\NormalTok{ &isVisible) \{ }\VariableTok{m_IsVisible}\NormalTok{ = isVisible; \}}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ rotate(}\AttributeTok{const} \DataTypeTok{double}\NormalTok{ &degrees) = }\DecValTok{0}\NormalTok{;}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ scale(}\AttributeTok{const} \DataTypeTok{double}\NormalTok{ &factor) = }\DecValTok{0}\NormalTok{;}
+  \CommentTok{// + other methods}
+\KeywordTok{private}\NormalTok{:}
+  \DataTypeTok{bool} \VariableTok{m_IsVisible}\NormalTok{;}
+  \DataTypeTok{unsigned} \DataTypeTok{char} \VariableTok{m_Colour}\NormalTok{[}\DecValTok{3}\NormalTok{]; }\CommentTok{// RGB}
+  \DataTypeTok{double} \VariableTok{m_CentreOfMass}\NormalTok{[}\DecValTok{2}\NormalTok{];}
+\NormalTok{\};}
+
+\KeywordTok{class}\NormalTok{ Rectangle : }\KeywordTok{public}\NormalTok{ Shape \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  Rectangle();}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ rotate(}\AttributeTok{const} \DataTypeTok{double}\NormalTok{ &degrees);}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ scale(}\AttributeTok{const} \DataTypeTok{double}\NormalTok{ &factor);}
+  \CommentTok{// + other methods}
+\KeywordTok{private}\NormalTok{:}
+  \DataTypeTok{double} \VariableTok{m_Corner1}\NormalTok{[}\DecValTok{2}\NormalTok{];}
+  \DataTypeTok{double} \VariableTok{m_Corner2}\NormalTok{[}\DecValTok{2}\NormalTok{];}
+\NormalTok{\};}
+
+\KeywordTok{class}\NormalTok{ Circle : }\KeywordTok{public}\NormalTok{ Shape \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  Circle();}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ rotate(}\AttributeTok{const} \DataTypeTok{double}\NormalTok{ &degrees);}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ scale(}\AttributeTok{const} \DataTypeTok{double}\NormalTok{ &factor);}
+  \CommentTok{// + other methods}
+\KeywordTok{private}\NormalTok{:}
+  \DataTypeTok{float}\NormalTok{ radius;}
+\NormalTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{polymorphism}{%
+\subsubsection{Polymorphism}\label{polymorphism}}
+
+\begin{itemize}
+\tightlist
+\item
+  Several types:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    (normally) ``subtype'': via inheritance
+  \item
+    ``parametric'': via templates
+  \item
+    ``ad hoc'': via function overloading
+  \end{itemize}
+\item
+  Common interface to entities of different types
+\item
+  Same method, different behaviour
+\end{itemize}
+
+\hypertarget{class-example-3}{%
+\subsubsection{Class Example}\label{class-example-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"shape.h"}
+\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{** argv)}
+\NormalTok{\{}
+\NormalTok{  Circle c1;}
+\NormalTok{  Rectangle r1;}
+\NormalTok{  Shape *s1 = &c1;}
+\NormalTok{  Shape *s2 = &r1;}
+
+  \CommentTok{// Calls method in Shape (as not virtual)}
+  \DataTypeTok{bool}\NormalTok{ isVisible = }\KeywordTok{true}\NormalTok{;}
+\NormalTok{  s1->setVisible(isVisible);}
+\NormalTok{  s2->setVisible(isVisible);}
+
+  \CommentTok{// Calls method in derived (as declared virtual)}
+\NormalTok{  s1->rotate(}\DecValTok{10}\NormalTok{);}
+\NormalTok{  s2->rotate(}\DecValTok{10}\NormalTok{);}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{homework---11}{%
+\subsubsection{Homework - 11}\label{homework---11}}
+
+\begin{itemize}
+\tightlist
+\item
+  Use \url{https://github.com/MattClarkson/CMakeCatch2.git} and create a
+  simple shape class for a square with methods to calculate the area
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Create an object of the class from within an app and print the
+    result of the area calculation to screen
+  \item
+    Try to write some unit tests to check the class behaves as expected
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework---12}{%
+\subsubsection{Homework - 12}\label{homework---12}}
+
+\begin{itemize}
+\tightlist
+\item
+  Again using \texttt{CMakeCatch2} as a basis use inheritance and
+  polymorphism to create a shape base class and a set of derived classes
+  for a square, rectangle
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Draw a class inheritance diagram before starting
+  \item
+    Confirm that the get area functions behave differently for the
+    different dervied classes
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{c-standard-library}{%
+\subsection{C++ Standard Library}\label{c-standard-library}}
+
+\hypertarget{what-is-it}{%
+\subsubsection{What is it}\label{what-is-it}}
+
+\begin{itemize}
+\tightlist
+\item
+  A collection of:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Containers (e.g.~\texttt{std::vector}, \texttt{std::array},
+    \texttt{std::map}, \ldots{})
+  \item
+    Methods to manipulate these containers (e.g.~\texttt{std::sort},
+    \texttt{std::find\_if})
+  \item
+    Strings (\texttt{std::string}) and streams (e.g.~\texttt{std::cout},
+    \texttt{std::endl}, \ldots{})
+  \item
+    Function objects (e.g.~arithmetic operations, comparisons and
+    logical operations, \ldots{})
+  \end{itemize}
+\item
+  Part of the ISO Standard itself so it has to be implemented to be
+  called C++
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Can include in your code by simply adding the relevant
+    \texttt{\#include\ \textless{}headername\textgreater{}} and then
+    using the \texttt{std::} namespace
+  \item
+    A list of these headers can be found at
+    \url{https://en.cppreference.com/w/cpp/header}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework---13}{%
+\subsubsection{Homework - 13}\label{homework---13}}
+
+\begin{itemize}
+\tightlist
+\item
+  Write short code snippets that use:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Containers \texttt{\textless{}array\textgreater{}},
+    \texttt{\textless{}vector\textgreater{}} and
+    \texttt{\textless{}map\textgreater{}}\\
+  \item
+    The \texttt{\textless{}random\textgreater{}} number generator
+    library
+  \item
+    The \texttt{\textless{}iostream\textgreater{}} to read in a string
+    from the terminal and output it to screen
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{smart-pointers}{%
+\subsection{Smart Pointers}\label{smart-pointers}}
+
+\hypertarget{use-of-raw-pointers}{%
+\subsubsection{Use of Raw Pointers}\label{use-of-raw-pointers}}
+
+\begin{itemize}
+\tightlist
+\item
+  Given a pointer passed to a function
+\end{itemize}
+
+\begin{verbatim}
+   void DoSomethingClever(int *a) 
+   {
+     // write some code
+   }
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  How do we use the pointer?
+\item
+  What problems are there?
+\end{itemize}
+
+\hypertarget{problems-with-raw-pointers}{%
+\subsubsection{Problems with Raw
+Pointers}\label{problems-with-raw-pointers}}
+
+\begin{itemize}
+\tightlist
+\item
+  From
+  \href{https://www.amazon.co.uk/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8\&qid=1484571499\&sr=8-1\&keywords=Effective+Modern+C\%2B\%2B}{``Effective
+  Modern C++'', Meyers, p117}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If you are done, do you destroy it?
+  \item
+    How to destroy it? Call \texttt{delete} or some method first:
+    \texttt{a-\textgreater{}Shutdown();}
+  \item
+    Single object or array?
+  \item
+    \texttt{delete} or \texttt{delete{[}{]}}?
+  \item
+    How to ensure the whole system only deletes it once?
+  \item
+    Is it dangling, if I don't delete it?
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{use-smart-pointers}{%
+\subsubsection{Use Smart Pointers}\label{use-smart-pointers}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{new/delete} on raw pointers not good enough
+\item
+  So, use Smart Pointers
+
+  \begin{itemize}
+  \tightlist
+  \item
+    automatically delete pointed to object
+  \item
+    explicit control over sharing
+  \item
+    i.e.~smarter
+  \end{itemize}
+\item
+  Smart Pointers model the ``ownership''
+\end{itemize}
+
+\hypertarget{further-reading}{%
+\subsubsection{Further Reading}\label{further-reading}}
+
+\begin{itemize}
+\tightlist
+\item
+  Notes here are based on these:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{http://www.umich.edu/~eecs381/handouts/C++11_smart_ptrs.pdf}{David
+    Kieras online paper}
+  \item
+    \href{https://www.amazon.co.uk/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8\&qid=1484571499\&sr=8-1\&keywords=Effective+Modern+C\%2B\%2B}{``Effective
+    Modern C++'', Meyers, ch4}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{standard-library-smart-pointers}{%
+\subsubsection{Standard Library Smart
+Pointers}\label{standard-library-smart-pointers}}
+
+\begin{itemize}
+\tightlist
+\item
+  Here we teach Standard Library
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{http://en.cppreference.com/w/cpp/memory/unique_ptr}{std::unique\_ptr}
+    - models \emph{has-a} but also unique ownership
+  \item
+    \href{http://en.cppreference.com/w/cpp/memory/shared_ptr}{std::shared\_ptr}
+    - models \emph{has-a} but shared ownership
+  \item
+    \href{http://en.cppreference.com/w/cpp/memory/weak_ptr}{std::weak\_ptr}
+    - temporary reference, breaks circular references
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{stack-allocated---no-leak.}{%
+\subsubsection{Stack Allocated - No
+Leak.}\label{stack-allocated---no-leak.}}
+
+\begin{itemize}
+\tightlist
+\item
+  To recap:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"Fraction.h"}
+\DataTypeTok{int}\NormalTok{ main() \{}
+\NormalTok{  Fraction f(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{);}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Gives:
+\end{itemize}
+
+\begin{verbatim}
+I'm being deleted
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  So stack allocated objects are deleted, when stack unwinds.
+\end{itemize}
+
+\hypertarget{heap-allocated---leak.}{%
+\subsubsection{Heap Allocated - Leak.}\label{heap-allocated---leak.}}
+
+\begin{itemize}
+\tightlist
+\item
+  To recap:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"Fraction.h"}
+\DataTypeTok{int}\NormalTok{ main() \{}
+\NormalTok{  Fraction *f = }\KeywordTok{new}\NormalTok{ Fraction(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{);}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Gives:
+\end{itemize}
+
+\begin{verbatim}
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  So heap allocated objects are not deleted.
+\item
+  Its the pointer (stack allocated) that's deleted.
+\end{itemize}
+
+\hypertarget{unique-ptr---unique-ownership}{%
+\subsubsection{Unique Ptr - Unique
+Ownership}\label{unique-ptr---unique-ownership}}
+
+\begin{itemize}
+\tightlist
+\item
+  So:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"Fraction.h"}
+\PreprocessorTok{#include }\ImportTok{<memory>}
+\DataTypeTok{int}\NormalTok{ main() \{}
+  \BuiltInTok{std::}\NormalTok{unique_ptr<Fraction> f(}\KeywordTok{new}\NormalTok{ Fraction(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{));}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Gives:
+\end{itemize}
+
+\begin{verbatim}
+I'm being deleted
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  And object is deleted.
+\item
+  Is that it?
+\end{itemize}
+
+\hypertarget{unique-ptr---move}{%
+\subsubsection{Unique Ptr - Move?}\label{unique-ptr---move}}
+
+\begin{itemize}
+\tightlist
+\item
+  Does move work?
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"Fraction.h"}
+\PreprocessorTok{#include }\ImportTok{<memory>}
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{int}\NormalTok{ main() \{}
+  \BuiltInTok{std::}\NormalTok{unique_ptr<Fraction> f(}\KeywordTok{new}\NormalTok{ Fraction(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{));}
+  \CommentTok{// std::unique_ptr<Fraction> f2(f); // compile error}
+
+  \BuiltInTok{std::}\NormalTok{cerr << }\StringTok{"f="}\NormalTok{ << f.get() << }\BuiltInTok{std::}\NormalTok{endl;}
+
+  \BuiltInTok{std::}\NormalTok{unique_ptr<Fraction> f2;}
+  \CommentTok{// f2 = f; // compile error}
+  \CommentTok{// f2.reset(f.get()); // bad idea}
+
+\NormalTok{  f2.reset(f.release());}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"f="}\NormalTok{ << f.get() << }\StringTok{", f2="}\NormalTok{ << f2.get() << }\BuiltInTok{std::}\NormalTok{endl;}
+
+\NormalTok{  f = }\BuiltInTok{std::}\NormalTok{move(f2);}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"f="}\NormalTok{ << f.get() << }\StringTok{", f2="}\NormalTok{ << f2.get() << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Gives:
+\end{itemize}
+
+\begin{verbatim}
+f=0, f2=0x56142bb41eb0
+f=0x56142bb41eb0, f2=0
+I'm being deleted
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  We see that API makes difficult to use incorrectly.
+\end{itemize}
+
+\hypertarget{unique-ptr---usage-1}{%
+\subsubsection{Unique Ptr - Usage 1}\label{unique-ptr---usage-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Forces you to think about ownership
+
+  \begin{itemize}
+  \tightlist
+  \item
+    No copy constructor
+  \item
+    No assignment
+  \end{itemize}
+\item
+  Consequently
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Can't pass pointer by value
+  \item
+    Use move semantics for placing in containers
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{unique-ptr---usage-2}{%
+\subsubsection{Unique Ptr - Usage 2}\label{unique-ptr---usage-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Put raw pointer STRAIGHT into unique\_ptr
+\item
+  see \texttt{std::make\_unique} in C++14.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"Fraction.h"}
+\PreprocessorTok{#include }\ImportTok{<memory>}
+\DataTypeTok{int}\NormalTok{ main() \{}
+  \BuiltInTok{std::}\NormalTok{unique_ptr<Fraction> f(}\KeywordTok{new}\NormalTok{ Fraction(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{));}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{shared-ptr---shared-ownership}{%
+\subsubsection{Shared Ptr - Shared
+Ownership}\label{shared-ptr---shared-ownership}}
+
+\begin{itemize}
+\tightlist
+\item
+  Many pointers pointing to same object
+\item
+  Object only deleted if no pointers refer to it
+\item
+  Achieved via reference counting
+\end{itemize}
+
+\hypertarget{shared-ptr-control-block}{%
+\subsubsection{Shared Ptr Control
+Block}\label{shared-ptr-control-block}}
+
+\begin{itemize}
+\item
+  Won't go to too many details: 
+\item
+  From
+  \href{https://www.amazon.co.uk/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8\&qid=1484571499\&sr=8-1\&keywords=Effective+Modern+C\%2B\%2B}{``Effective
+  Modern C++'', Meyers, p140}
+\end{itemize}
+
+\hypertarget{shared-ptr---usage-1}{%
+\subsubsection{Shared Ptr - Usage 1}\label{shared-ptr---usage-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Place raw pointer straight into shared\_ptr
+\item
+  Pass to functions, reference or by value
+\item
+  Copy/Move constructors and assignment all implemented
+\end{itemize}
+
+\hypertarget{shared-ptr---usage-2}{%
+\subsubsection{Shared Ptr - Usage 2}\label{shared-ptr---usage-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"Fraction.h"}
+\PreprocessorTok{#include }\ImportTok{<memory>}
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+\DataTypeTok{void}\NormalTok{ divideBy2(}\AttributeTok{const} \BuiltInTok{std::}\NormalTok{shared_ptr<Fraction>& f)}
+\NormalTok{\{}
+\NormalTok{  f->denominator *= }\DecValTok{2}\NormalTok{;}
+\NormalTok{\}}
+\DataTypeTok{void}\NormalTok{ multiplyBy2(}\AttributeTok{const} \BuiltInTok{std::}\NormalTok{shared_ptr<Fraction> f)}
+\NormalTok{\{}
+\NormalTok{  f->numerator *= }\DecValTok{2}\NormalTok{;}
+\NormalTok{\}}
+\DataTypeTok{int}\NormalTok{ main() \{}
+  \BuiltInTok{std::}\NormalTok{shared_ptr<Fraction> f1(}\KeywordTok{new}\NormalTok{ Fraction(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{));}
+  \BuiltInTok{std::}\NormalTok{shared_ptr<Fraction> f2 = f1;}
+\NormalTok{  divideBy2(f1);}
+\NormalTok{  multiplyBy2(f2);}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Value="}\NormalTok{ << f1->numerator << }\StringTok{"/"}\NormalTok{ << f1->denominator << }\BuiltInTok{std::}\NormalTok{endl;}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"f1="}\NormalTok{ << f1.get() << }\StringTok{", f2="}\NormalTok{ << f2.get() << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{shared-ptr---usage-3}{%
+\subsubsection{Shared Ptr - Usage 3}\label{shared-ptr---usage-3}}
+
+\begin{itemize}
+\tightlist
+\item
+  Watch out for exceptions.
+\item
+  \href{https://www.amazon.co.uk/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8\&qid=1484571499\&sr=8-1\&keywords=Effective+Modern+C\%2B\%2B}{``Effective
+  Modern C++'', Meyers, p140}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"Fraction.h"}
+\PreprocessorTok{#include }\ImportTok{<memory>}
+\PreprocessorTok{#include }\ImportTok{<stdexcept>}
+\PreprocessorTok{#include }\ImportTok{<vector>}
+\DataTypeTok{int}\NormalTok{ checkSomething(}\AttributeTok{const} \BuiltInTok{std::}\NormalTok{shared_ptr<Fraction>& f, }\AttributeTok{const} \DataTypeTok{int}\NormalTok{& i)}
+\NormalTok{\{}
+  \CommentTok{// whatever.}
+\NormalTok{\}}
+\DataTypeTok{int}\NormalTok{ computeSomethingFirst()}
+\NormalTok{\{}
+  \CommentTok{// what if this throws?}
+\NormalTok{\}}
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{vector<}\BuiltInTok{std::}\NormalTok{shared_ptr<Fraction> >  spaceForLotsOfFractions;}
+  \DataTypeTok{int}\NormalTok{ result = checkSomething(}\BuiltInTok{std::}\NormalTok{shared_ptr<Fraction>(}\KeywordTok{new}\NormalTok{ Fraction(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{)),}
+\NormalTok{                              computeSomethingFirst()}
+\NormalTok{                             );}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{shared-ptr---usage-4}{%
+\subsubsection{Shared Ptr - Usage 4}\label{shared-ptr---usage-4}}
+
+\begin{itemize}
+\tightlist
+\item
+  Prefer \texttt{std::make\_shared}
+\item
+  Exception safe
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"Fraction.h"}
+\PreprocessorTok{#include }\ImportTok{<memory>}
+\PreprocessorTok{#include }\ImportTok{<stdexcept>}
+\PreprocessorTok{#include }\ImportTok{<vector>}
+\DataTypeTok{int}\NormalTok{ checkSomething(}\AttributeTok{const} \BuiltInTok{std::}\NormalTok{shared_ptr<Fraction>& f, }\AttributeTok{const} \DataTypeTok{int}\NormalTok{& i)}
+\NormalTok{\{}
+  \CommentTok{// whatever.}
+\NormalTok{\}}
+\DataTypeTok{int}\NormalTok{ computeSomethingFirst()}
+\NormalTok{\{}
+  \CommentTok{// what if this throws?}
+\NormalTok{\}}
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{vector<}\BuiltInTok{std::}\NormalTok{shared_ptr<Fraction> >  spaceForLotsOfFractions;}
+  \DataTypeTok{int}\NormalTok{ result = checkSomething(}\BuiltInTok{std::}\NormalTok{make_shared<Fraction>(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{),}
+\NormalTok{                              computeSomethingFirst()}
+\NormalTok{                             );}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{weak-ptr---why}{%
+\subsubsection{Weak Ptr - Why?}\label{weak-ptr---why}}
+
+\begin{itemize}
+\tightlist
+\item
+  Like a shared pointer, but doesn't actually own anything
+\item
+  Use for example:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Caches
+  \item
+    Break circular pointers
+  \end{itemize}
+\item
+  Limited API
+\item
+  Not terribly common as most code ends up as hierarchies
+\end{itemize}
+
+\hypertarget{weak-ptr---example}{%
+\subsubsection{Weak Ptr - Example}\label{weak-ptr---example}}
+
+\begin{itemize}
+\tightlist
+\item
+  See
+  \href{http://www.umich.edu/~eecs381/handouts/C++11_smart_ptrs.pdf}{David
+  Kieras online paper}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"Fraction.h"}
+\PreprocessorTok{#include }\ImportTok{<memory>}
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+\DataTypeTok{int}\NormalTok{ main() \{}
+  \BuiltInTok{std::}\NormalTok{shared_ptr<Fraction> s1(}\KeywordTok{new}\NormalTok{ Fraction(}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{));}
+  \BuiltInTok{std::}\NormalTok{weak_ptr<Fraction> w1;      }\CommentTok{// can point to nothing}
+  \BuiltInTok{std::}\NormalTok{weak_ptr<Fraction> w2 = s1; }\CommentTok{// assignment from shared}
+  \BuiltInTok{std::}\NormalTok{weak_ptr<Fraction> w3(s1);  }\CommentTok{// construction from shared}
+
+  \CommentTok{// Can't be de-referenced!!!}
+  \CommentTok{// std::cerr << "Value=" << w1->numerator << "/" << w1->denominator << std::endl;}
+
+  \CommentTok{// Needs converting to shared, and checking}
+  \BuiltInTok{std::}\NormalTok{shared_ptr<Fraction> s2 = w1.lock();}
+  \ControlFlowTok{if}\NormalTok{ (s2)}
+\NormalTok{  \{}
+    \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Object w1 exists="}\NormalTok{ << s2->numerator << }\StringTok{"/"}\NormalTok{ << s2->denominator << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  \}}
+
+  \CommentTok{// Or, create shared, check for exception}
+  \BuiltInTok{std::}\NormalTok{shared_ptr<Fraction> s3(w2);}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Object must exists="}\NormalTok{ << s3->numerator << }\StringTok{"/"}\NormalTok{ << s3->denominator << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{final-advice}{%
+\subsubsection{Final Advice}\label{final-advice}}
+
+\begin{itemize}
+\tightlist
+\item
+  Benefits of immediate, fine-grained, garbage collection
+\item
+  Just ask
+  \href{https://www.amazon.co.uk/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8\&qid=1484571499\&sr=8-1\&keywords=Effective+Modern+C\%2B\%2B}{Scott
+  Meyers!}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use \texttt{unique\_ptr} for unique ownership
+  \item
+    Easy to convert \texttt{unique\_ptr} to \texttt{shared\_ptr}
+  \item
+    But not the reverse
+  \item
+    Use \texttt{shared\_ptr} for shared resource management
+  \item
+    Avoid raw \texttt{new} - use \texttt{make\_shared},
+    \texttt{make\_unique}
+  \item
+    Use \texttt{weak\_ptr} for pointers that can dangle (cache etc)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{conclusion-for-smart-pointers}{%
+\subsubsection{Conclusion for Smart
+Pointers}\label{conclusion-for-smart-pointers}}
+
+\begin{itemize}
+\tightlist
+\item
+  Default to standard library, check compiler
+\item
+  Lots of other Smart Pointers
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{http://www.boost.org}{Boost} (use STL).
+  \item
+    \href{http://www.itk.org}{ITK}
+  \item
+    \href{http://www.vtk.org/Wiki/VTK/Tutorials/SmartPointers}{VTK}
+  \item
+    \href{https://wiki.qt.io/Smart_Pointers}{Qt Smart Pointers}
+  \end{itemize}
+\item
+  Don't be tempted to write your own
+\item
+  Always read the manual
+\item
+  Always consistently use it
+\end{itemize}
+
+\hypertarget{homework---14}{%
+\subsubsection{Homework - 14}\label{homework---14}}
+
+\begin{itemize}
+\tightlist
+\item
+  Create a memory leak using bare pointers and \texttt{new} to heap
+  allocate and then repeat using using smart pointers
+\item
+  Think of a use case where a resource should be uniquely owned and
+  implement as a short application
+\item
+  Think of a use case where the resource is shared between multiple and
+  implement
+\item
+  \emph{Note: in lecture 6 you will learn how to use tools such as
+  \texttt{valgrind} to consistently check for memory leaks}
+\end{itemize}
+
+\hypertarget{lambda-expressions}{%
+\subsection{Lambda expressions}\label{lambda-expressions}}
+
+\hypertarget{game-changer-for-c}{%
+\subsubsection{Game changer for C++}\label{game-changer-for-c}}
+
+\begin{itemize}
+\tightlist
+\item
+  Lambda expressions allow you to create an unnamed function object
+  within code
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Expression can be defined as they are passed to a function as an
+    argument
+  \item
+    Useful for varions STL \texttt{\_if} and comparison functions:
+    \texttt{std::find\_if}, \texttt{std::remove\_if},
+    \texttt{std::sort}, \texttt{std::lower\_bound} etc
+  \item
+    Can be used for a one off call for a context specific function
+  \end{itemize}
+\item
+  From ``Effective Modern C++'', Meyers, p215
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A game changer for C++ despite bringing no new expressive power to
+    the language
+  \item
+    Everything you can do with a lambda could be done by hand with a bit
+    more typing
+  \item
+    But the impact on day to day C++ software development is enormous\\
+  \item
+    Allow expressions to be defined as they are being passed as an
+    argument to a function
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+   \BuiltInTok{std::}\NormalTok{find_if(container.begin(), container.end(),}
+\NormalTok{                [](}\DataTypeTok{int}\NormalTok{ val) \{ }\ControlFlowTok{return} \DecValTok{0}\NormalTok{ < val && val < }\DecValTok{10}\NormalTok{; \});}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{basic-syntax}{%
+\subsubsection{Basic syntax}\label{basic-syntax}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{{[}\ captures\ {]}\ \{\ body\ \};}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{captures} is comma separated list of variable from enclosing
+    scope that the lambda can use
+  \item
+    \texttt{body} is where the function is defined
+  \item
+    \texttt{{[}x,y{]}\ \{\ return\ x\ +\ y;\ \}}
+  \item
+    Captures can be by value \texttt{{[}x{]}} or by reference
+    \texttt{{[}\&x{]}}
+  \item
+    \texttt{{[}={]}} and `{[}\&{]} are default capture modes for all
+    variables in enclosing scope -\textgreater{} discouraged as can lead
+    to dangling references and are not thread safe (``Effective Modern
+    C++'', Meyers, p216)
+  \end{itemize}
+\item
+  \texttt{{[}\ captures\ {]}\ (\ params\ )\ \{\ body\ \};}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{params} list of params as with named functions except cannot
+    have default value
+  \item
+    \texttt{{[}{]}\ (int\ x,\ int\ y)\ \{\ return\ x*x\ +\ y*y;\ \}(1,2)}
+    would return \texttt{5}
+  \end{itemize}
+\item
+  \texttt{{[}\ captures\ {]}\ (\ params\ )\ -\textgreater{}\ ret\ \{\ body\ \};}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{ret} is the return type, if not specified inferred from the
+    return statement in the function
+  \item
+    \texttt{{[}{]}\ ()\ -\textgreater{}\ float\ \{\ return\ "a";\ \}}
+    would give
+    \texttt{error:\ cannot\ convert\ const\ char*\ to\ float\ in\ return}
+  \end{itemize}
+\item
+  It is possible to copy and reuse lambdas
+\end{itemize}
+
+\begin{verbatim}
+  auto c1 = [](int y) { return y*y; };
+  auto c2 = c1; // c2 is a copy of c1
+  cout << "c1(2) = " << c1(2) << endl;
+  cout << "c2(4) = " << c2(4) << endl;
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Gives
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{c1(}\DecValTok{2}\NormalTok{) = }\DecValTok{4}
+\NormalTok{c2(}\DecValTok{4}\NormalTok{) = }\DecValTok{16}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{example-use}{%
+\subsubsection{Example use}\label{example-use}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \BuiltInTok{std::}\NormalTok{vector<}\DataTypeTok{int}\NormalTok{> v \{ }\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{8}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{10}\NormalTok{ \};}
+  \DataTypeTok{int}\NormalTok{ neven = }\BuiltInTok{std::}\NormalTok{count_if(v.begin(), v.end(), [](}\DataTypeTok{int}\NormalTok{ i)\{ }\ControlFlowTok{return}\NormalTok{ i % }\DecValTok{2}\NormalTok{ == }\DecValTok{0}\NormalTok{; \});}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{homework-15}{%
+\subsubsection{Homework 15}\label{homework-15}}
+
+\begin{itemize}
+\tightlist
+\item
+  Create your own lambda expressions for each of the three basic syntax
+  examples given above
+\item
+  Try to change a param from within, can you see a different behaviour
+  if passed by reference or by value?
+\item
+  Use \texttt{std::count\_if} with an appropriate lambda expression to
+  count the number of values in a
+  \texttt{vector\textless{}int\textgreater{}} that are divisable by 2 or
+  3
+\end{itemize}
+
+\hypertarget{homework-16}{%
+\subsubsection{Homework 16}\label{homework-16}}
+
+\begin{itemize}
+\tightlist
+\item
+  Create a simple \texttt{Student} class that has public member
+  variables storing \texttt{string\ firstname},
+  \texttt{string\ secondname} and \texttt{int\ age}
+\item
+  Create a vector and fill it with various instances of the
+  \texttt{Student} class
+\item
+  Create a sorting class \texttt{StudentSort} and that has a method
+  \texttt{vector\textless{}Student\textgreater{}\ SortByAge(vector\textless{}Student\textgreater{}\ vs);}
+  that returns a \texttt{vector\textless{}Student\textgreater{}} that
+  has been sorted by age
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use a \texttt{std::sort} and a lambda expression for this
+  \item
+    Add a \texttt{bool} switch to
+    \texttt{SortByAge(vector\textless{}Student\textgreater{}\ vs,\ bool\ reverse\ =\ false)}
+    that reverses the sort
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{error-handling}{%
+\subsection{Error Handling}\label{error-handling}}
+
+\hypertarget{exceptions}{%
+\subsubsection{Exceptions}\label{exceptions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Exceptions are the C++ or Object Oriented way of Error Handling
+\end{itemize}
+
+\hypertarget{exception-handling-example}{%
+\subsubsection{Exception Handling
+Example}\label{exception-handling-example}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<stdexcept>}
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+\DataTypeTok{bool}\NormalTok{ someFunction() \{ }\ControlFlowTok{return} \KeywordTok{false}\NormalTok{; \}}
+
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+  \ControlFlowTok{try}
+\NormalTok{  \{}
+    \DataTypeTok{bool}\NormalTok{ isOK = }\KeywordTok{false}\NormalTok{;}
+\NormalTok{    isOK = someFunction();}
+    \ControlFlowTok{if}\NormalTok{ (!isOK)}
+\NormalTok{    \{}
+      \ControlFlowTok{throw} \BuiltInTok{std::}\NormalTok{runtime_error(}\StringTok{"Something is wrong"}\NormalTok{);}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  \ControlFlowTok{catch}\NormalTok{ (}\BuiltInTok{std::}\NormalTok{exception& e)}
+\NormalTok{  \{}
+    \BuiltInTok{std::}\NormalTok{cerr << }\StringTok{"Caught Exception:"}\NormalTok{ << e.what() << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{whats-the-point}{%
+\subsubsection{What's the Point?}\label{whats-the-point}}
+
+\begin{itemize}
+\tightlist
+\item
+  A good summary
+  \href{https://msdn.microsoft.com/en-us/library/hh279678.aspx}{here}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Have separated error handling logic from application logic
+  \item
+    Forces calling code to recognize an error condition and handle it
+  \item
+    Stack-unwinding destroys all objects in scope according to
+    well-defined rules
+  \item
+    A clean separation between code that detects error and code that
+    handles error
+  \end{itemize}
+\item
+  First, lets look at C-style return codes
+\end{itemize}
+
+\hypertarget{error-handling-c-style}{%
+\subsubsection{Error Handling C-Style}\label{error-handling-c-style}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ foo(}\DataTypeTok{int}\NormalTok{ a, }\DataTypeTok{int}\NormalTok{ b)}
+\NormalTok{\{}
+  \CommentTok{// stuff}
+  
+  \ControlFlowTok{if}\NormalTok{(some error condition)}
+\NormalTok{  \{}
+    \ControlFlowTok{return} \DecValTok{1}\NormalTok{;}
+\NormalTok{  \} }\ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (another error condition) \{}
+    \ControlFlowTok{return} \DecValTok{2}\NormalTok{;}
+\NormalTok{  \} }\ControlFlowTok{else}\NormalTok{ \{}
+    \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\DataTypeTok{void}\NormalTok{ caller(}\DataTypeTok{int}\NormalTok{ a, }\DataTypeTok{int}\NormalTok{ b) }
+\NormalTok{\{}
+ \DataTypeTok{int}\NormalTok{ result = foo(a, b);}
+ \ControlFlowTok{if}\NormalTok{ (result == }\DecValTok{1}\NormalTok{) }\CommentTok{// do something}
+ \ControlFlowTok{else} \ControlFlowTok{if}\NormalTok{ (result == }\DecValTok{2}\NormalTok{) }\CommentTok{// do something difference}
+ \ControlFlowTok{else} 
+\NormalTok{ \{}
+   \CommentTok{// All ok, continue as you wish}
+\NormalTok{ \}}
+\NormalTok{\} }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{outcome}{%
+\subsubsection{Outcome}\label{outcome}}
+
+\begin{itemize}
+\tightlist
+\item
+  Can be perfectly usable
+\item
+  Depends on depth of function call stack
+\item
+  Depends on complexity of program
+\item
+  If deep/large, then can become unweildy
+\end{itemize}
+
+\hypertarget{error-handling-c-style-1}{%
+\subsubsection{Error Handling C++
+Style}\label{error-handling-c-style-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<stdexcept>}
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{int}\NormalTok{ ReadNumberFromFile(}\AttributeTok{const} \BuiltInTok{std::}\NormalTok{string& fileName)}
+\NormalTok{\{}
+  \ControlFlowTok{if}\NormalTok{ (fileName.length() == }\DecValTok{0}\NormalTok{)}
+\NormalTok{  \{}
+    \ControlFlowTok{throw} \BuiltInTok{std::}\NormalTok{runtime_error(}\StringTok{"Empty fileName provided"}\NormalTok{);}
+\NormalTok{  \}}
+
+  \CommentTok{// Check for file existence etc. throw io errors.}
+
+  \CommentTok{// do stuff}
+  \ControlFlowTok{return} \DecValTok{2}\NormalTok{; }\CommentTok{// returning dummy number to force error}
+\NormalTok{\}}
+
+
+\DataTypeTok{void}\NormalTok{ ValidateNumber(}\DataTypeTok{int}\NormalTok{ number)}
+\NormalTok{\{}
+  \ControlFlowTok{if}\NormalTok{ (number < }\DecValTok{3}\NormalTok{)}
+\NormalTok{  \{}
+    \ControlFlowTok{throw} \BuiltInTok{std::}\NormalTok{logic_error(}\StringTok{"Number is < 3"}\NormalTok{);}
+\NormalTok{  \}}
+  \ControlFlowTok{if}\NormalTok{ (number > }\DecValTok{10}\NormalTok{)}
+\NormalTok{  \{}
+    \ControlFlowTok{throw} \BuiltInTok{std::}\NormalTok{logic_error(}\StringTok{"Number is > 10"}\NormalTok{);}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+
+\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{** argv)}
+\NormalTok{\{}
+  \ControlFlowTok{try}
+\NormalTok{  \{}
+    \ControlFlowTok{if}\NormalTok{ (argc < }\DecValTok{2}\NormalTok{)}
+\NormalTok{    \{}
+      \BuiltInTok{std::}\NormalTok{cerr << }\StringTok{"Usage: "}\NormalTok{ << argv[}\DecValTok{0}\NormalTok{] << }\StringTok{" fileName"}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+      \ControlFlowTok{return}\NormalTok{ EXIT_FAILURE;}
+\NormalTok{    \}}
+
+    \DataTypeTok{int}\NormalTok{ myNumber = ReadNumberFromFile(argv[}\DecValTok{1}\NormalTok{]);}
+\NormalTok{    ValidateNumber(myNumber);}
+    
+    \CommentTok{// Compute stuff.}
+
+    \ControlFlowTok{return}\NormalTok{ EXIT_SUCCESS;}
+
+\NormalTok{  \}}
+  \ControlFlowTok{catch}\NormalTok{ (}\BuiltInTok{std::}\NormalTok{exception& e)}
+\NormalTok{  \{}
+    \BuiltInTok{std::}\NormalTok{cerr << }\StringTok{"Caught Exception:"}\NormalTok{ << e.what() << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{comments}{%
+\subsubsection{Comments}\label{comments}}
+
+\begin{itemize}
+\tightlist
+\item
+  Code that throws does not worry about the catcher
+\item
+  Exceptions are classes, can carry data
+\item
+  More suited to larger libraries of re-usable functions
+\item
+  Many different catchers, all implementing different error handling
+\item
+  Generally scales better, more flexible
+\end{itemize}
+
+\hypertarget{practical-tips-for-exception-handling}{%
+\subsubsection{Practical Tips For Exception
+Handling}\label{practical-tips-for-exception-handling}}
+
+\begin{itemize}
+\tightlist
+\item
+  Decide on error handling strategy at start
+\item
+  Use it consistently
+\item
+  Create your own base class exception
+\item
+  Derive all your exceptions from that base class
+\item
+  Stick to a few obvious classes, not one class for every single error
+\end{itemize}
+
+\hypertarget{homework-17}{%
+\subsubsection{Homework 17}\label{homework-17}}
+
+\begin{itemize}
+\tightlist
+\item
+  Taking the \texttt{Fraction} class from homework 8:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Try to call \texttt{simplify} for a fraction with a denominator of 0
+    and see what exception is thrown
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Try to catch this exception from the calling code
+    \end{itemize}
+  \item
+    Create your own exception class that is thrown instead. It should
+    inherit from \texttt{std::exception} (see
+    \href{https://en.cppreference.com/w/cpp/error/exception}{cppreference/error/exception})
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Catch this from the calling code
+    \end{itemize}
+  \item
+    Create the fraction and call \texttt{simplify} from within a
+    function that is called from the main calling code
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Check you can catch the exception either in the calling code or
+      from within the function
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{more-practical-tips-for-exception-handling}{%
+\subsubsection{More Practical Tips For Exception
+Handling}\label{more-practical-tips-for-exception-handling}}
+
+\begin{itemize}
+\tightlist
+\item
+  Look at \href{http://www.cplusplus.com/reference/exception/}{C++
+  standard classes} and
+  \href{http://www.cplusplus.com/doc/tutorial/exceptions/}{tutorial}
+\item
+  An exception macro may be useful,
+  e.g.~\href{https://github.com/MITK/MITK/blob/master/Modules/Core/include/mitkException.h}{mitk::Exception}
+  and
+  \href{https://github.com/MITK/MITK/blob/master/Modules/Core/include/mitkExceptionMacro.h}{mithThrow()}
+\end{itemize}
+
+\hypertarget{lecture-3-modern-c-2}{%
+\section{Lecture 3: Modern C++ (2)}\label{lecture-3-modern-c-2}}
+
+\hypertarget{lecture-3-overview}{%
+\subsection{Lecture 3: Overview}\label{lecture-3-overview}}
+
+\hypertarget{the-story-so-far-1}{%
+\subsubsection{The Story So Far}\label{the-story-so-far-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Git, CMake, Catch2
+\item
+  Recap of Modern C++ features
+\item
+  OO concepts
+\end{itemize}
+
+\hypertarget{todays-lesson-1}{%
+\subsubsection{Todays Lesson}\label{todays-lesson-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  C++ Standard Library
+\item
+  Smart pointers and move semantics
+\item
+  Lambda expressions
+\item
+  Exceptions
+\end{itemize}
+
+\hypertarget{summary}{%
+\subsection{Summary}\label{summary}}
+
+\hypertarget{putting-it-together---subsystems}{%
+\subsubsection{Putting It Together -
+Subsystems}\label{putting-it-together---subsystems}}
+
+\begin{itemize}
+\tightlist
+\item
+  Program to interfaces
+\item
+  Inject dependencies
+\item
+  Always make fully initialised object
+\item
+  Always use smart pointers
+\item
+  Use exceptions for errors
+\item
+  RAII very useful
+\item
+  Results in a more flexible, extensible, robust design
+\end{itemize}
+
+\hypertarget{putting-it-together---oop}{%
+\subsubsection{Putting It Together -
+OOP}\label{putting-it-together---oop}}
+
+\begin{itemize}
+\tightlist
+\item
+  Prefer composition over inheritance
+\item
+  Use constructional patterns to assemble code
+\end{itemize}
+
+\hypertarget{function-templates}{%
+\subsection{Function Templates}\label{function-templates}}
+
+\hypertarget{function-templates-example}{%
+\subsubsection{Function Templates
+Example}\label{function-templates-example}}
+
+\begin{itemize}
+\tightlist
+\item
+  Credit to
+  \href{http://www.cplusplus.com/doc/tutorial/functions2}{www.cplusplus.com}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{// function template}
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std;}
+
+\KeywordTok{template}\NormalTok{ <}\KeywordTok{class}\NormalTok{ T> }\CommentTok{// class|typename}
+\NormalTok{T sum (T a, T b)}
+\NormalTok{\{}
+\NormalTok{  T result;}
+\NormalTok{  result = a + b;}
+  \ControlFlowTok{return}\NormalTok{ result;}
+\NormalTok{\}}
+
+\DataTypeTok{int}\NormalTok{ main () \{}
+  \DataTypeTok{int}\NormalTok{ i=}\DecValTok{5}\NormalTok{, j=}\DecValTok{6}\NormalTok{;}
+  \DataTypeTok{double}\NormalTok{ f=}\FloatTok{2.0}\NormalTok{, g=}\FloatTok{0.5}\NormalTok{;}
+\NormalTok{  cout << sum<}\DataTypeTok{int}\NormalTok{>(i,j) << }\CharTok{'}\SpecialCharTok{\textbackslash{}n}\CharTok{'}\NormalTok{;}
+\NormalTok{  cout << sum<}\DataTypeTok{double}\NormalTok{>(f,g) << }\CharTok{'}\SpecialCharTok{\textbackslash{}n}\CharTok{'}\NormalTok{;}
+  \ControlFlowTok{return} \DecValTok{0}\NormalTok{;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  And produces this output when run
+\end{itemize}
+
+\begin{verbatim}
+11
+2.5
+\end{verbatim}
+
+\hypertarget{why-use-function-templates}{%
+\subsubsection{Why Use Function
+Templates?}\label{why-use-function-templates}}
+
+\begin{itemize}
+\tightlist
+\item
+  Instead of function overloading
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Reduce your code duplication
+  \item
+    Reduce your maintenance
+  \item
+    Reduce your effort
+  \item
+    Also see this
+    \href{http://www.codeproject.com/Articles/257589/An-Idiots-Guide-to-Cplusplus-Templates-Part}{Additional
+    tutorial}.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{language-definition-1}{%
+\subsubsection{Language Definition 1}\label{language-definition-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  From the
+  \href{http://en.cppreference.com/w/cpp/language/function_template}{language
+  reference}
+\end{itemize}
+
+\begin{verbatim}
+template < parameter-list > function-declaration
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  so
+\end{itemize}
+
+\begin{verbatim}
+template < class T >  // note 'class'
+void MyFunction(T a, T b)
+{
+  // do something
+}
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  or
+\end{itemize}
+
+\begin{verbatim}
+template < typename T1, typename T2 >  // note 'typename'
+T1 MyFunctionTwoArgs(T1 a, T2 b)
+{
+  // do something
+}
+\end{verbatim}
+
+\hypertarget{language-definition-2}{%
+\subsubsection{Language Definition 2}\label{language-definition-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Also
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Can use \texttt{class} or \texttt{typename}.
+  \item
+    I prefer \texttt{typename}.
+  \item
+    Template parameter can apply to references, pointers, return types,
+    arrays etc.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{default-argument-resolution}{%
+\subsubsection{Default Argument
+Resolution}\label{default-argument-resolution}}
+
+\begin{itemize}
+\tightlist
+\item
+  Given:
+\end{itemize}
+
+\begin{verbatim}
+double GetAverage<typename T>(const std::vector<T>& someNumbers);
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  then:
+\end{itemize}
+
+\begin{verbatim}
+std::vector<double> myNumbers;
+double result = GetAverage(myNumbers);
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  will call:
+\end{itemize}
+
+\begin{verbatim}
+double GetAverage<double>(const std::vector<double>& someNumbers);
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  So, if function parameters can inform the compiler uniquely as to
+  which function to instantiate, its automatically compiled.
+\end{itemize}
+
+\hypertarget{explicit-argument-resolution---part-1}{%
+\subsubsection{Explicit Argument Resolution - part
+1}\label{explicit-argument-resolution---part-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  However, given:
+\end{itemize}
+
+\begin{verbatim}
+double GetAverage<typename T>(const T& a, const T& b);
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  and:
+\end{itemize}
+
+\begin{verbatim}
+int a, b;
+int result = GetAverage(a, b);
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  But you don't want the int version called (due to integer division
+  perhaps), you can:
+\end{itemize}
+
+\begin{verbatim}
+double result = GetAverage<double>(a, b);
+\end{verbatim}
+
+\hypertarget{explicit-argument-resolution---part-2}{%
+\subsubsection{Explicit Argument Resolution - part
+2}\label{explicit-argument-resolution---part-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  equivalent to
+\end{itemize}
+
+\texttt{GetAverage\textless{}double\textgreater{}(static\_cast\textless{}double\textgreater{}(a),\ static\_cast\textless{}double\textgreater{}(b));}
+
+\begin{itemize}
+\item
+  i.e.~name the template function parameter explicitly.
+\item
+  Cases for Explicit Template Argument Specification
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Force compilation of a specific version (eg. int as above)
+  \item
+    Also if method parameters do not allow compiler to deduce anything
+    eg. \texttt{PrintSize()} method.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{beware-of-code-bloat}{%
+\subsubsection{Beware of Code Bloat}\label{beware-of-code-bloat}}
+
+\begin{itemize}
+\tightlist
+\item
+  Given:
+\end{itemize}
+
+\begin{verbatim}
+double GetMax<typename T1, typename T2>(const &T1, const &T2);
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  and:
+\end{itemize}
+
+\begin{verbatim}
+double r1 = GetMax(1,2);
+double r2 = GetMax(1,2.0);
+double r3 = GetMax(1.0,2.0);
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  The compiler will generate 3 different max functions.
+\item
+  Be Careful
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Executables/libraries get larger
+  \item
+    Compilation time will increase
+  \item
+    Error messages get more verbose
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{two-stage-compilation}{%
+\subsubsection{Two Stage Compilation}\label{two-stage-compilation}}
+
+\begin{itemize}
+\tightlist
+\item
+  Basic syntax checking (eg. brackets, semi-colon, etc), when
+  \texttt{\#include}'d
+\item
+  But only compiled when instantiated (eg. check existence of +
+  operator).
+\end{itemize}
+
+\hypertarget{instantiation}{%
+\subsubsection{Instantiation}\label{instantiation}}
+
+\begin{itemize}
+\tightlist
+\item
+  Object Code is only really generated if code is used
+\item
+  Template functions can be
+
+  \begin{itemize}
+  \tightlist
+  \item
+    .h file only
+  \item
+    .h file that includes separate .cxx/.txx/.hxx file (e.g.~ITK)
+  \item
+    .h file and separate .cxx/.txx file (sometimes by convention a .hpp
+    file)
+  \end{itemize}
+\item
+  In general
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Most libraries/people prefer header only implementations
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{explicit-instantiation---part-1}{%
+\subsubsection{Explicit Instantiation - part
+1}\label{explicit-instantiation---part-1}}
+
+\begin{itemize}
+\item
+  Language Reference
+  \href{http://en.cppreference.com/w/cpp/language/function_template}{here}
+\item
+  \href{http://msdn.microsoft.com/en-us/library/by56e477\%28VS.80\%29.aspx}{Microsoft
+  Example}
+\item
+  Given (library) header:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#ifndef explicitInstantiation_h}
+\PreprocessorTok{#define e}\NormalTok{xplicitInstantiation_h}
+\KeywordTok{template}\NormalTok{ <}\KeywordTok{typename}\NormalTok{ T> }\DataTypeTok{void}\NormalTok{ f(T s);}
+\PreprocessorTok{#endif}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Given (library) implementation:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+\PreprocessorTok{#include }\ImportTok{<typeinfo>}
+\PreprocessorTok{#include }\ImportTok{"explicitInstantiation.h"}
+\KeywordTok{template}\NormalTok{<}\KeywordTok{typename}\NormalTok{ T>}
+\DataTypeTok{void}\NormalTok{ f(T s)}
+\NormalTok{\{}
+    \BuiltInTok{std::}\NormalTok{cout << }\KeywordTok{typeid}\NormalTok{(T).name() << }\StringTok{" "}\NormalTok{ << s << }\CharTok{'}\SpecialCharTok{\textbackslash{}n}\CharTok{'}\NormalTok{;}
+\NormalTok{\}}
+\KeywordTok{template} \DataTypeTok{void}\NormalTok{ f<}\DataTypeTok{double}\NormalTok{>(}\DataTypeTok{double}\NormalTok{); }\CommentTok{// instantiates f<double>(double)}
+\KeywordTok{template} \DataTypeTok{void}\NormalTok{ f<>(}\DataTypeTok{char}\NormalTok{); }\CommentTok{// instantiates f<char>(char), template argument deduced}
+\KeywordTok{template} \DataTypeTok{void}\NormalTok{ f(}\DataTypeTok{int}\NormalTok{); }\CommentTok{// instantiates f<int>(int), template argument deduced}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{explicit-instantiation---part-2}{%
+\subsubsection{Explicit Instantiation - part
+2}\label{explicit-instantiation---part-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Given client code:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+\PreprocessorTok{#include }\ImportTok{"explicitInstantiation.h"}
+
+\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{** argv)}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Matt, double 1.0="}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  f(}\FloatTok{1.0}\NormalTok{);}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Matt, char a="}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  f(}\CharTok{'a'}\NormalTok{);}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Matt, int 2="}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  f(}\DecValTok{2}\NormalTok{);}
+\CommentTok{//  std::cout << "Matt, float 3.0=" << std::endl;}
+\CommentTok{//  f<float>(static_cast<float>(3.0));  // compile error}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  We get:
+\end{itemize}
+
+\begin{verbatim}
+Matt, double 1.0=
+d 1
+Matt, char a=
+c a
+Matt, int 2=
+i 2
+\end{verbatim}
+
+\hypertarget{explicit-instantiation---part-3}{%
+\subsubsection{Explicit Instantiation - part
+3}\label{explicit-instantiation---part-3}}
+
+\begin{itemize}
+\tightlist
+\item
+  Explicit Instantiation:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Forces instantiation of the function
+  \item
+    Must appear after the definition
+  \item
+    Must appear only once for given argument list
+  \item
+    Stops implicit instantiation
+  \end{itemize}
+\item
+  So, mainly used by compiled library providers
+\item
+  Clients then \texttt{\#include} header and link to library
+\end{itemize}
+
+\begin{verbatim}
+Linking CXX executable explicitInstantiationMain.x
+Undefined symbols for architecture x86_64:
+  "void f<float>(float)", referenced from:
+\end{verbatim}
+
+\hypertarget{implicit-instantiation---part-1}{%
+\subsubsection{Implicit Instantiation - part
+1}\label{implicit-instantiation---part-1}}
+
+\begin{itemize}
+\item
+  Instantiated as they are used
+\item
+  Normally via \texttt{\#include} header files.
+\item
+  Given (library) header, that containts implementation:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#ifndef explicitInstantiation_h}
+\PreprocessorTok{#define e}\NormalTok{xplicitInstantiation_h}
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+\PreprocessorTok{#include }\ImportTok{<typeinfo>}
+\KeywordTok{template}\NormalTok{ <}\KeywordTok{typename}\NormalTok{ T> }\DataTypeTok{void}\NormalTok{ f(T s) \{ }\BuiltInTok{std::}\NormalTok{cout << }\KeywordTok{typeid}\NormalTok{(T).name() << }\StringTok{" "}\NormalTok{ << s << }\CharTok{'}\SpecialCharTok{\textbackslash{}n}\CharTok{'}\NormalTok{; \}}
+\PreprocessorTok{#endif}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{implicit-instantiation---part-2}{%
+\subsubsection{Implicit Instantiation - part
+2}\label{implicit-instantiation---part-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Given client code:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+\PreprocessorTok{#include }\ImportTok{"implicitInstantiation.h"}
+
+\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{** argv)}
+\NormalTok{\{}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Matt, double 1.0="}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  f(}\FloatTok{1.0}\NormalTok{);}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Matt, char a="}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  f(}\CharTok{'a'}\NormalTok{);}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Matt, int 2="}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  f(}\DecValTok{2}\NormalTok{);}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Matt, float 3.0="}\NormalTok{ << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{  f<}\DataTypeTok{float}\NormalTok{>(}\KeywordTok{static_cast}\NormalTok{<}\DataTypeTok{float}\NormalTok{>(}\FloatTok{3.0}\NormalTok{));  }\CommentTok{// no compile error}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  We get:
+\end{itemize}
+
+\begin{verbatim}
+Matt, double 1.0=
+d 1
+Matt, char a=
+c a
+Matt, int 2=
+i 2
+Matt, float 3.0=
+f 3
+\end{verbatim}
+
+\hypertarget{homework-19}{%
+\subsubsection{Homework 19}\label{homework-19}}
+
+\begin{itemize}
+\tightlist
+\item
+  Write a template function \texttt{AGreaterThanB} that compares two
+  input agruments of type \texttt{T} and returns a \texttt{bool} if
+  \texttt{A} is greater than \texttt{B}. The function should be able to
+  handle either \texttt{int}, \texttt{float} or \texttt{string} entries
+  (for the latter you will need to decide how to rank by size)
+\item
+  Try out the different types of explicit and implicit instantiation
+\item
+  Advanced/optional: write a template function that performs a binary
+  search on the contents of a vector containing either \texttt{int},
+  \texttt{float} or \texttt{string} entries (you could adapt this
+  \href{http://www.cplusplus.com/reference/algorithm/find/}{equivalent
+  to} ) code, N.B. the \texttt{vector} will need to be sorted by size
+\end{itemize}
+
+\hypertarget{inheritance-1}{%
+\subsection{Inheritance}\label{inheritance-1}}
+
+\hypertarget{dont-overuse-inheritance}{%
+\subsubsection{Don't overuse
+Inheritance}\label{dont-overuse-inheritance}}
+
+\begin{itemize}
+\tightlist
+\item
+  Inheritance is not just for saving duplication
+\item
+  It MUST represent derived/related types
+\item
+  Derived class must truely represent `is-a' relationship
+\item
+  eg `Square' is-a `Shape'
+\item
+  Deep inheritance hierarchies are almost always wrong
+\item
+  If something `doesn't quite fit' check your inheritance
+\end{itemize}
+
+\hypertarget{surely-its-simple}{%
+\subsubsection{Surely Its Simple?}\label{surely-its-simple}}
+
+\begin{itemize}
+\tightlist
+\item
+  Common example: Square/Rectangle problem,
+  \href{http://www.oodesign.com/liskov-s-substitution-principle.html}{here}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\KeywordTok{class}\NormalTok{ Rectangle \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  Rectangle() : }\VariableTok{m_Width}\NormalTok{(}\DecValTok{0}\NormalTok{), }\VariableTok{m_Height}\NormalTok{(}\DecValTok{0}\NormalTok{) \{\};}
+  \KeywordTok{virtual}\NormalTok{ ~Rectangle()\{\};}
+  \DataTypeTok{int}\NormalTok{ GetArea() }\AttributeTok{const}\NormalTok{ \{ }\ControlFlowTok{return} \VariableTok{m_Width}\NormalTok{*}\VariableTok{m_Height}\NormalTok{; \}}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ SetWidth(}\DataTypeTok{int}\NormalTok{ w) \{ }\VariableTok{m_Width}\NormalTok{=w; \}}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ SetHeight(}\DataTypeTok{int}\NormalTok{ h) \{ }\VariableTok{m_Height}\NormalTok{=h; \}}
+\KeywordTok{protected}\NormalTok{:}
+  \DataTypeTok{int} \VariableTok{m_Width}\NormalTok{;}
+  \DataTypeTok{int} \VariableTok{m_Height}\NormalTok{;}
+\NormalTok{\};}
+
+\KeywordTok{class}\NormalTok{ Square : }\KeywordTok{public}\NormalTok{ Rectangle \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  Square()\{\};}
+\NormalTok{  ~Square()\{\};}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ SetWidth(}\DataTypeTok{int}\NormalTok{ w) \{ }\VariableTok{m_Width}\NormalTok{=w; }\VariableTok{m_Height}\NormalTok{=w; \}}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ SetHeight(}\DataTypeTok{int}\NormalTok{ h) \{ }\VariableTok{m_Width}\NormalTok{=h; }\VariableTok{m_Height}\NormalTok{=h; \}}
+\NormalTok{\};}
+
+\DataTypeTok{int}\NormalTok{ main() }
+\NormalTok{\{}
+\NormalTok{  Rectangle *r = }\KeywordTok{new}\NormalTok{ Square();}
+\NormalTok{  r->SetWidth(}\DecValTok{5}\NormalTok{);}
+\NormalTok{  r->SetHeight(}\DecValTok{6}\NormalTok{);}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Area = "}\NormalTok{ << r->GetArea() << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{liskov-substitution-principal}{%
+\subsubsection{Liskov Substitution
+Principal}\label{liskov-substitution-principal}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://en.wikipedia.org/wiki/Liskov_substitution_principle}{Wikipedia}
+\item
+  ``if S is a subtype of T, then objects of type T may be replaced with
+  objects of type S without altering any of the desirable properties of
+  that program''
+\item
+  i.e.~is S is derived class from base class T then objects of type T
+  should be able to be replaced with objects of type S
+\item
+  Can something truely be substituted?
+\item
+  If someone else filled a vector of type T, would I care what type I
+  have?
+\end{itemize}
+
+\hypertarget{what-to-look-for}{%
+\subsubsection{What to Look For}\label{what-to-look-for}}
+
+\begin{itemize}
+\tightlist
+\item
+  If you have:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Methods you don't want to implement in derived class
+  \item
+    Methods that don't make sense in derived class
+  \item
+    Methods that are unneeded in derived class
+  \item
+    If you have a list of something, and someone else swapping in a
+    derived type would cause problems
+  \end{itemize}
+\item
+  Then you have probably got your inheritance wrong
+\end{itemize}
+
+\hypertarget{composition-vs-inheritance}{%
+\subsubsection{Composition Vs
+Inheritance}\label{composition-vs-inheritance}}
+
+\begin{itemize}
+\tightlist
+\item
+  Lots of Info online eg.
+  \href{https://en.wikipedia.org/wiki/Composition_over_inheritance}{wikipedia}
+\item
+  In basic OO Principals
+
+  \begin{itemize}
+  \tightlist
+  \item
+    `Has-a' means `pointer or reference to'
+  \item
+    eg.\texttt{Car} has-a \texttt{Engine}
+  \end{itemize}
+\item
+  But there is also:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://en.wikipedia.org/wiki/Object_composition\#Composition}{Composition}:
+    Strong `has-a'. Component parts are owned by thing pointing to them.
+  \item
+    \href{https://en.wikipedia.org/wiki/Object_composition\#Aggregation}{Aggregation}:
+    Weak `has-a'. Component part has its own lifecycle.
+  \item
+    Association: General term, referring to either composition or
+    aggregation, just a `pointer-to'
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{examples}{%
+\subsubsection{Examples}\label{examples}}
+
+\begin{itemize}
+\tightlist
+\item
+  House `has-a' set of Rooms. Destroying House, you destroy all Room
+  objects. No point having a House on its own.
+\item
+  Room `has-a' Computer. If room is being refurbished, Computer should
+  not be thrown away. Can go to another room
+\end{itemize}
+
+\hypertarget{but-why}{%
+\subsubsection{But Why?}\label{but-why}}
+
+\begin{itemize}
+\tightlist
+\item
+  Good article:
+  \href{https://www.thoughtworks.com/insights/blog/composition-vs-inheritance-how-choose}{Choosing
+  Composition or Inheritance}
+\item
+  Composition is more flexible
+\item
+  Inheritance has much tighter definition than you realise
+\end{itemize}
+
+\hypertarget{construction-patterns}{%
+\subsection{Construction Patterns}\label{construction-patterns}}
+
+\hypertarget{constructional-patterns}{%
+\subsubsection{Constructional Patterns}\label{constructional-patterns}}
+
+\begin{itemize}
+\tightlist
+\item
+  Other methods include
+
+  \begin{itemize}
+  \tightlist
+  \item
+    See \href{https://en.wikipedia.org/wiki/Design_Patterns}{Gang of
+    Four} book
+  \item
+    \href{https://en.wikipedia.org/wiki/Strategy_pattern}{Strategy
+    Pattern}
+  \item
+    \href{https://en.wikipedia.org/wiki/Factory_method_pattern}{Factory
+    Pattern}
+  \item
+    \href{https://en.wikipedia.org/wiki/Abstract_factory_pattern}{Abstract
+    Factory Pattern}
+  \item
+    \href{https://en.wikipedia.org/wiki/Builder_pattern}{Builder
+    Pattern}\\
+  \end{itemize}
+\item
+  Also look up
+  \href{https://en.wikipedia.org/wiki/Service_locator_pattern}{Service
+  Locator Pattern}
+\end{itemize}
+
+\hypertarget{managing-complexity}{%
+\subsubsection{Managing Complexity}\label{managing-complexity}}
+
+\begin{itemize}
+\tightlist
+\item
+  Rather than monolithic code (bad)
+\item
+  We end up with many smaller classes (good)
+\item
+  So, its more flexible (good)
+\item
+  It does look more complex at first (don't panic)
+\item
+  You get used to thinking in small objects
+\end{itemize}
+
+\hypertarget{using-templates}{%
+\subsection{Using Templates}\label{using-templates}}
+
+\hypertarget{what-are-templates}{%
+\subsubsection{What Are Templates?}\label{what-are-templates}}
+
+\begin{itemize}
+\tightlist
+\item
+  C++ templates allow functions/classes to operate on generic types.
+\item
+  See: \href{http://en.wikipedia.org/wiki/Generic_programming}{Generic
+  Programming}.
+\item
+  Write code, where `type' is provided later
+\item
+  Types instantiated at compile time, as they are needed
+\item
+  (Remember, C++ is strongly typed)
+\end{itemize}
+
+\hypertarget{you-may-already-use-them}{%
+\subsubsection{You May Already Use
+Them!}\label{you-may-already-use-them}}
+
+You probably use them already. Example type (class):
+
+\begin{verbatim}
+std::vector<int> myVectorInts;
+\end{verbatim}
+
+Example algorithm:
+\href{http://www.cplusplus.com/reference/algorithm/sort/}{C++ sort}
+
+\begin{verbatim}
+std::sort(myVectorInts.begin(), myVectorInts.end());
+\end{verbatim}
+
+Aim: Write functions, classes, in terms of future/other/generic types,
+type provided as parameter.
+
+\hypertarget{why-are-templates-useful}{%
+\subsubsection{Why Are Templates
+Useful?}\label{why-are-templates-useful}}
+
+\begin{itemize}
+\tightlist
+\item
+  Generic programming:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    not pre-processor macros
+  \item
+    so maintain type safety
+  \item
+    separate algorithm from implementation
+  \item
+    extensible, optimisable via \href{97TemplateMetaProg}{Template
+    Meta-Programming} (TMP)
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{book}{%
+\subsubsection{Book}\label{book}}
+
+\begin{itemize}
+\tightlist
+\item
+  For more infomation see
+  \href{http://erdani.com/index.php/books/modern-c-design/}{``Modern C++
+  Design''}
+\item
+  2001, but still excellent text on templates, meta-programming, policy
+  based design etc.
+\item
+  This section of course, gives basic introduction for research
+  programmers
+\end{itemize}
+
+\hypertarget{are-templates-difficult}{%
+\subsubsection{Are Templates Difficult?}\label{are-templates-difficult}}
+
+\begin{itemize}
+\tightlist
+\item
+  Some say: notation is ugly
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Does take getting used to
+  \item
+    Use \texttt{typedef} to simplify
+  \end{itemize}
+\item
+  Some say: verbose, confusing error messages
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Nothing intrinsically difficult
+  \item
+    Take small steps, compile regularly
+  \item
+    Learn to think like a compiler
+  \end{itemize}
+\item
+  Code infiltration
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Use sparingly
+  \item
+    Hide usage behind clean interface
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{why-templates-in-research}{%
+\subsubsection{Why Templates in
+Research?}\label{why-templates-in-research}}
+
+\begin{itemize}
+\tightlist
+\item
+  Minimise code duplication: think about how useful \texttt{std::vector}
+  is
+\item
+  For example methods that generalise from 2D, 3D, n-dimensions,
+  (e.g.~\href{http://www.itk.org}{ITK} )
+\item
+  Test numerical code with simple types, apply to complex/other types
+\end{itemize}
+
+\hypertarget{why-teach-templates}{%
+\subsubsection{Why Teach Templates?}\label{why-teach-templates}}
+
+\begin{itemize}
+\tightlist
+\item
+  Standard Template Library uses them
+\item
+  More common in research code, than business code
+\item
+  In research, more likely to `code for the unknown'
+\item
+  Boost, Qt, EIGEN uses them
+\end{itemize}
+
+\hypertarget{dependency-injection}{%
+\subsection{Dependency Injection}\label{dependency-injection}}
+
+\hypertarget{construction}{%
+\subsubsection{Construction}\label{construction}}
+
+\begin{itemize}
+\tightlist
+\item
+  What could be wrong with this:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<memory>}
+
+\KeywordTok{class}\NormalTok{ Bar \{}
+\NormalTok{\};}
+
+\KeywordTok{class}\NormalTok{ Foo \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  Foo()}
+\NormalTok{  \{}
+    \VariableTok{m_Bar}\NormalTok{ = }\KeywordTok{new}\NormalTok{ Bar();}
+\NormalTok{  \}}
+
+\KeywordTok{private}\NormalTok{:}
+\NormalTok{  Bar* }\VariableTok{m_Bar}\NormalTok{;}
+\NormalTok{\};}
+
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+\NormalTok{  Foo a;}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{unwanted-dependencies}{%
+\subsubsection{Unwanted Dependencies}\label{unwanted-dependencies}}
+
+\begin{itemize}
+\tightlist
+\item
+  If constructor instantiates class directly:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hard-coded class name
+  \item
+    Duplication of initialisation code
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{dependency-injection-1}{%
+\subsubsection{Dependency Injection}\label{dependency-injection-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Read Martin Fowler's
+  \href{http://www.martinfowler.com/articles/injection.html}{Inversion
+  of Control Containers and the Dependency Injection Pattern}
+\item
+  Type 2 - Constructor Injection
+\item
+  Type 3 - Setter Injection
+\end{itemize}
+
+\hypertarget{constructor-injection-example}{%
+\subsubsection{Constructor Injection
+Example}\label{constructor-injection-example}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<memory>}
+
+\KeywordTok{class}\NormalTok{ Bar \{}
+\NormalTok{\};}
+
+\KeywordTok{class}\NormalTok{ Foo \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  Foo(Bar* b)}
+\NormalTok{  : }\VariableTok{m_Bar}\NormalTok{(b)}
+\NormalTok{  \{}
+\NormalTok{  \}}
+
+\KeywordTok{private}\NormalTok{:}
+\NormalTok{  Bar* }\VariableTok{m_Bar}\NormalTok{;}
+\NormalTok{\};}
+
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+\NormalTok{  Bar b;}
+\NormalTok{  Foo a(&b);}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{setter-injection-example}{%
+\subsubsection{Setter Injection
+Example}\label{setter-injection-example}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<memory>}
+
+\KeywordTok{class}\NormalTok{ Bar \{}
+\NormalTok{\};}
+
+\KeywordTok{class}\NormalTok{ Foo \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  Foo()}
+\NormalTok{  \{}
+\NormalTok{  \}}
+  \DataTypeTok{void}\NormalTok{ SetBar(Bar *b) \{ }\VariableTok{m_Bar}\NormalTok{ = b; \}}
+
+\KeywordTok{private}\NormalTok{:}
+\NormalTok{  Bar* }\VariableTok{m_Bar}\NormalTok{;}
+\NormalTok{\};}
+
+\DataTypeTok{int}\NormalTok{ main()}
+\NormalTok{\{}
+\NormalTok{  Bar b;}
+\NormalTok{  Foo a();}
+\NormalTok{  a.SetBar(&b);}
+\NormalTok{\}}
+
+\end{Highlighting}
+\end{Shaded}
+
+Question: Which is better?
+
+\hypertarget{advantages-of-dependency-injection}{%
+\subsubsection{Advantages of Dependency
+Injection}\label{advantages-of-dependency-injection}}
+
+\begin{itemize}
+\tightlist
+\item
+  Using Dependency Injection
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Removes hard coding of \texttt{new\ ClassName}
+  \item
+    Creation is done outside class, so class only uses public API
+  \item
+    Leads towards fewer assumptions in the code
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{homework-18}{%
+\subsubsection{Homework 18}\label{homework-18}}
+
+\begin{itemize}
+\tightlist
+\item
+  Taking the \texttt{Student} class from homework 16:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Create a new \texttt{Laptop} class that has a string \texttt{os}
+    data member for the operating system name and an integer
+    \texttt{year} data member for the year produced.
+  \item
+    \texttt{Laptop} should have both a default constructor that sets
+    \texttt{year} to 0 and name to ``Not set'' as well as an overloaded
+    constructor that initialises both \texttt{year} and \texttt{os}
+  \item
+    Modify \texttt{Student} to have a \texttt{Laptop} data member
+  \item
+    Try out the two types of dependency injection above: constructor,
+    setter
+  \item
+    Confirm that the \texttt{Student} class is now invarient to changes
+    in how you instantiate \texttt{Laptop}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{lecture-4-modern-c-3}{%
+\section{Lecture 4: Modern C++ (3)}\label{lecture-4-modern-c-3}}
+
+\hypertarget{patterns-and-templates}{%
+\subsection{Patterns and Templates}\label{patterns-and-templates}}
+
+\hypertarget{the-story-so-far-2}{%
+\subsubsection{The Story So Far}\label{the-story-so-far-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  Git, CMake, Catch2
+\item
+  Recap of Modern C++ features
+\item
+  OO concepts
+\item
+  C++ Standard Library
+\item
+  Smart pointers and move semantics
+\item
+  Lambda expressions
+\item
+  Error handling
+\end{itemize}
+
+\hypertarget{todays-lesson-2}{%
+\subsubsection{Todays Lesson}\label{todays-lesson-2}}
+
+\begin{itemize}
+\tightlist
+\item
+  How to assemble/organise classes
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Beginner mistakes
+
+    \begin{itemize}
+    \tightlist
+    \item
+      1 class - all functionality
+    \item
+      Deep inheritance trees
+    \end{itemize}
+  \item
+    Patterns
+
+    \begin{itemize}
+    \tightlist
+    \item
+      RAII
+    \item
+      Common OO design patterns
+    \end{itemize}
+  \end{itemize}
+\item
+  Templates
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Function templates
+  \item
+    Class templates
+  \item
+    Template specialisation
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{raii-pattern}{%
+\subsection{RAII Pattern}\label{raii-pattern}}
+
+\hypertarget{what-is-it-1}{%
+\subsubsection{What is it?}\label{what-is-it-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization}{Resource
+  Allocation Is Initialisation (RAII)}
+\item
+  Obtain all resources in constructor
+\item
+  Release them all in destructor
+\end{itemize}
+
+\hypertarget{why-is-it}{%
+\subsubsection{Why is it?}\label{why-is-it}}
+
+\begin{itemize}
+\tightlist
+\item
+  Guaranteed fully initialised object once constructor is complete
+\item
+  Objects on stack are guaranteed to be destroyed when an exception is
+  thrown and stack is unwound
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Including smart pointers to objects
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{example}{%
+\subsubsection{Example}\label{example}}
+
+\begin{itemize}
+\tightlist
+\item
+  You may already be using it:
+  \href{https://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization}{STL
+  example}
+\item
+  \href{https://en.wikibooks.org/wiki/More_C\%2B\%2B_Idioms/Resource_Acquisition_Is_Initialization}{Another
+  example}
+\end{itemize}
+
+\hypertarget{homework-19-1}{%
+\subsubsection{Homework 19}\label{homework-19-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Create a simple class \texttt{Foo} that contains a data member that is
+  a raw pointer \texttt{bptr} to another class \texttt{Bar} that
+  contains an integer as a data member
+\item
+  Add a \texttt{std::cout} to the constructor and destructor of both
+  classes so that you know when they have been called
+\item
+  Implement the RAII pattern to create and destroy the \texttt{Bar}
+  object that \texttt{bptr} points to
+\item
+  Create an instance of \texttt{Foo\ foo} in your application and
+  confirm that if an exception is thrown before Foo goes out of scope
+  that the destructor for both \texttt{Foo} and \texttt{Bar} are called
+  and the \texttt{Bar} object is released
+\end{itemize}
+
+\hypertarget{program-to-interfaces}{%
+\subsection{Program To Interfaces}\label{program-to-interfaces}}
+
+\hypertarget{why}{%
+\subsubsection{Why?}\label{why}}
+
+\begin{itemize}
+\tightlist
+\item
+  In research code we often ``just start hacking''
+\item
+  You tend to mix interface and implementation
+\item
+  Results in client/user of a class having implicit dependency on the
+  implementation
+\item
+  So, define a pure virtual class, not for inheritance, but for clean
+  API
+\end{itemize}
+
+\hypertarget{example-1}{%
+\subsubsection{Example}\label{example-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{<memory>}
+\PreprocessorTok{#include }\ImportTok{<vector>}
+\PreprocessorTok{#include }\ImportTok{<string>}
+
+\KeywordTok{class}\NormalTok{ DataPlayerI \{}
+\KeywordTok{public}\NormalTok{:}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ StartPlaying() = }\DecValTok{0}\NormalTok{;}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ StopPlaying() = }\DecValTok{0}\NormalTok{;}
+\NormalTok{\};}
+
+\KeywordTok{class}\NormalTok{ FileDataPlayer : }\KeywordTok{public}\NormalTok{ DataPlayerI \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  FileDataPlayer(}\AttributeTok{const} \BuiltInTok{std::}\NormalTok{string& fileName)\{\}; }\CommentTok{// opens file    (RAII)}
+\NormalTok{  ~FileDataPlayer()\{\};                           }\CommentTok{// releases file (RAII)}
+\KeywordTok{public}\NormalTok{:}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ StartPlaying() \{\};}
+  \KeywordTok{virtual} \DataTypeTok{void}\NormalTok{ StopPlaying() \{\};}
+\NormalTok{\};}
+
+\KeywordTok{class}\NormalTok{ Experiment \{}
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  Experiment(DataPlayerI *d) \{ }\VariableTok{m_Player}\NormalTok{.reset(d); \} }\CommentTok{// takes ownership}
+  \DataTypeTok{void}\NormalTok{ Run() \{\};}
+  \BuiltInTok{std::}\NormalTok{vector<}\BuiltInTok{std::}\NormalTok{string> GetResults() }\AttributeTok{const}\NormalTok{ \{\};}
+\KeywordTok{private}\NormalTok{:}
+  \BuiltInTok{std::}\NormalTok{unique_ptr<DataPlayerI> }\VariableTok{m_Player}\NormalTok{;  }
+\NormalTok{\};}
+
+\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{** argv)}
+\NormalTok{\{}
+\NormalTok{  FileDataPlayer fdp(argv[}\DecValTok{1}\NormalTok{]); }\CommentTok{// Or some class WebDataPlayer derived from DataPlayerI}
+\NormalTok{  Experiment e(&fdp);}
+\NormalTok{  e.Run();}
+
+  \CommentTok{// etc.}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{comments-1}{%
+\subsubsection{Comments}\label{comments-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  Useful between sub-components of a system
+
+  \begin{itemize}
+  \tightlist
+  \item
+    GUI front end, Web back end
+  \item
+    Logic and Database
+  \end{itemize}
+\item
+  Is useful in general to force loose connections between areas of code
+
+  \begin{itemize}
+  \tightlist
+  \item
+    e.g.~different libraries that have different dependencies
+  \item
+    define an interface that just exports standard types
+  \item
+    stops the spread of dependencies
+  \item
+    Lookup \href{http://en.cppreference.com/w/cpp/language/pimpl}{Pimpl}
+    idiom
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{class-templates}{%
+\subsection{Class Templates}\label{class-templates}}
+
+\hypertarget{class-templates-example---part-1}{%
+\subsubsection{Class Templates Example - part
+1}\label{class-templates-example---part-1}}
+
+\begin{itemize}
+\tightlist
+\item
+  If you understand template functions, then template classes are easy!
+\item
+  Refering to
+  \href{http://www.cplusplus.com/doc/tutorial/templates/}{this
+  tutorial}, an example:
+\end{itemize}
+
+Header:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{template}\NormalTok{ <}\KeywordTok{typename}\NormalTok{ T> }\KeywordTok{class}\NormalTok{ MyPair \{}
+\NormalTok{  T }\VariableTok{m_Values}\NormalTok{[}\DecValTok{2}\NormalTok{];}
+
+\KeywordTok{public}\NormalTok{:}
+\NormalTok{  MyPair(}\AttributeTok{const}\NormalTok{ T &first, }\AttributeTok{const}\NormalTok{ T &second);}
+\NormalTok{  T getMax() }\AttributeTok{const}\NormalTok{;}
+\NormalTok{\};}
+\PreprocessorTok{#include }\ImportTok{"pairClassExample.cc"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{class-templates-example---part-2}{%
+\subsubsection{Class Templates Example - part
+2}\label{class-templates-example---part-2}}
+
+Implementation:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{template}\NormalTok{ <}\KeywordTok{typename}\NormalTok{ T>}
+\NormalTok{MyPair<T>::MyPair(}\AttributeTok{const}\NormalTok{ T& first, }\AttributeTok{const}\NormalTok{ T& second)}
+\NormalTok{\{}
+  \VariableTok{m_Values}\NormalTok{[}\DecValTok{0}\NormalTok{] = first;}
+  \VariableTok{m_Values}\NormalTok{[}\DecValTok{1}\NormalTok{] = second;}
+\NormalTok{\}}
+
+\KeywordTok{template}\NormalTok{ <}\KeywordTok{typename}\NormalTok{ T>}
+\NormalTok{T}
+\NormalTok{MyPair<T>::getMax() }\AttributeTok{const}
+\NormalTok{\{}
+  \ControlFlowTok{if}\NormalTok{ (}\VariableTok{m_Values}\NormalTok{[}\DecValTok{0}\NormalTok{] > }\VariableTok{m_Values}\NormalTok{[}\DecValTok{1}\NormalTok{])}
+    \ControlFlowTok{return} \VariableTok{m_Values}\NormalTok{[}\DecValTok{0}\NormalTok{];}
+  \ControlFlowTok{else}
+    \ControlFlowTok{return} \VariableTok{m_Values}\NormalTok{[}\DecValTok{1}\NormalTok{];}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{class-templates-example---part-3}{%
+\subsubsection{Class Templates Example - part
+3}\label{class-templates-example---part-3}}
+
+Usage:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{#include }\ImportTok{"pairClassExample.h"}
+\PreprocessorTok{#include }\ImportTok{<iostream>}
+
+\DataTypeTok{int}\NormalTok{ main(}\DataTypeTok{int}\NormalTok{ argc, }\DataTypeTok{char}\NormalTok{** argv)}
+\NormalTok{\{}
+\NormalTok{  MyPair<}\DataTypeTok{int}\NormalTok{> a(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{);}
+  \BuiltInTok{std::}\NormalTok{cout << }\StringTok{"Max is:"}\NormalTok{ << a.getMax() << }\BuiltInTok{std::}\NormalTok{endl;}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{quick-comments}{%
+\subsubsection{Quick Comments}\label{quick-comments}}
+
+\begin{itemize}
+\tightlist
+\item
+  Implementation, 3 uses of parameter T
+\item
+  Same Implicit/Explicit instantiation rules
+\item
+  Note implicit requirements, eg. operator \textgreater{}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Remember the 2 stage compilation
+  \item
+    Remember code not instantiated until its used
+  \item
+    Take Unit Testing Seriously!
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{template-specialisation}{%
+\subsubsection{Template Specialisation}\label{template-specialisation}}
+
+\begin{itemize}
+\tightlist
+\item
+  If template defined for type T
+\item
+  Full specialisation - special case for a specific type eg. char
+\item
+  Partial specialisation - special case for a type that still templates,
+  e.g.~T*
+\end{itemize}
+
+\begin{verbatim}
+template <typename T> class MyVector {
+template <> class MyVector<char> {  // full specialisation
+template <typename T> MyVector<T*> { // partial specialisation
+\end{verbatim}
+
+\hypertarget{homework-20}{%
+\subsubsection{Homework 20}\label{homework-20}}
+
+\begin{itemize}
+\tightlist
+\item
+  Implement the above class \texttt{MyPair} template
+\item
+  Try out with both Implicit and Explicit instantiation
+\item
+  Add a \texttt{Swap()} method that switches the contents of
+  \texttt{m\_Values{[}0{]}} and \texttt{m\_Values{[}1{]}}
+\end{itemize}

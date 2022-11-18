@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Unit Testing</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/night.css"/>
+  <link rel="stylesheet" href="/research-computing-with-cpp//css/ucl_reveal.css"/>
+  <link rel="stylesheet" href="/research-computing-with-cpp//site-styles/reveal.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Unit Testing</h1>
+</section>
+
+<section><section id="unit-testing" class="title-slide slide level2"><h2>Unit Testing</h2></section><section id="what-is-unit-testing" class="slide level3">
+<h3>What is Unit Testing?</h3>
+<p>At a high level</p>
+<ul>
+<li>Way of testing code.</li>
+<li>Unit
+<ul>
+<li>Smallest ‘atomic’ chunk of code</li>
+<li>i.e. Function, could be a Class</li>
+</ul></li>
+<li>See also:
+<ul>
+<li>Integration/System Testing</li>
+<li>Regression Testing</li>
+<li>User Acceptance Testing</li>
+</ul></li>
+</ul>
+</section><section id="benefits-of-unit-testing" class="slide level3">
+<h3>Benefits of Unit Testing?</h3>
+<ul>
+<li>Certainty of correctness</li>
+<li>(Scientific Rigour)</li>
+<li>Influences and improves design</li>
+<li>Confidence to refactor, improve</li>
+</ul>
+</section><section id="drawbacks-for-unit-testing" class="slide level3">
+<h3>Drawbacks for Unit Testing?</h3>
+<ul>
+<li>Don’t know how
+<ul>
+<li>This course will help</li>
+</ul></li>
+<li>Takes too much time
+<ul>
+<li>Really?</li>
+<li>IT SAVES TIME in the long run</li>
+</ul></li>
+</ul>
+</section><section id="unit-testing-frameworks" class="slide level3">
+<h3>Unit Testing Frameworks</h3>
+<p>Generally, all very similar</p>
+<ul>
+<li>JUnit (Java), NUnit (.net?), CppUnit, phpUnit,</li>
+<li>Basically
+<ul>
+<li>Macros (C++), methods (Java) to test conditions</li>
+<li>Macros (C++), reflection (Java) to run/discover tests</li>
+<li>Ways of looking at results.
+<ul>
+<li>Java/Eclipse: Integrated with IDE</li>
+<li>Log file or standard output</li>
+</ul></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="unit-testing-example" class="title-slide slide level2"><h2>Unit Testing Example</h2></section><section id="how-to-start" class="slide level3">
+<h3>How To Start</h3>
+<p>We discuss</p>
+<ul>
+<li>Basic Example</li>
+<li>Some tips</li>
+</ul>
+<p>Then its down to the developer/artist.</p>
+</section><section id="c-frameworks" class="slide level3">
+<h3>C++ Frameworks</h3>
+<p>To Consider:</p>
+<ul>
+<li><a href="https://github.com/philsquared/Catch">Catch</a></li>
+<li><a href="https://code.google.com/p/googletest/">GoogleTest</a></li>
+<li><a href="http://qt-project.org/doc/qt-4.8/qtestlib-manual.html">QTestLib</a></li>
+<li><a href="http://www.boost.org/doc/libs/1_57_0/libs/test/doc/html/index.html">BoostTest</a></li>
+<li><a href="http://cpptest.sourceforge.net/">CppTest</a></li>
+<li><a href="http://sourceforge.net/projects/cppunit/">CppUnit</a></li>
+</ul>
+</section><section id="worked-example" class="slide level3">
+<h3>Worked Example</h3>
+<ul>
+<li>Borrowed from
+<ul>
+<li><a href="https://github.com/philsquared/Catch/blob/master/docs/tutorial.md">Catch Tutorial</a></li>
+<li>and <a href="https://code.google.com/p/googletest/wiki/V1_7_Primer">Googletest Primer</a></li>
+</ul></li>
+<li>We use <a href="https://github.com/philsquared/Catch">Catch</a>, so notes are compilable</li>
+<li>But the concepts are the same</li>
+</ul>
+</section><section id="code" class="slide level3">
+<h3>Code</h3>
+<p>To keep it simple for now we do this in one file:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb1-1" title="1"><span class="pp">#define CATCH_CONFIG_MAIN  </span><span class="co">// This tells Catch to provide a main() - only do this in one cpp file</span></a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="pp">#include </span><span class="im">&quot;../catch/catch.hpp&quot;</span></a>
+<a class="sourceLine" id="cb1-3" title="3"></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="dt">unsigned</span> <span class="dt">int</span> Factorial( <span class="dt">unsigned</span> <span class="dt">int</span> number ) {</a>
+<a class="sourceLine" id="cb1-5" title="5">    <span class="cf">return</span> number &lt;= <span class="dv">1</span> ? number : Factorial(number-<span class="dv">1</span>)*number;</a>
+<a class="sourceLine" id="cb1-6" title="6">}</a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8">TEST_CASE( <span class="st">&quot;Factorials are computed&quot;</span>, <span class="st">&quot;[factorial]&quot;</span> ) {</a>
+<a class="sourceLine" id="cb1-9" title="9">    REQUIRE( Factorial(<span class="dv">1</span>) == <span class="dv">1</span> );</a>
+<a class="sourceLine" id="cb1-10" title="10">    REQUIRE( Factorial(<span class="dv">2</span>) == <span class="dv">2</span> );</a>
+<a class="sourceLine" id="cb1-11" title="11">    REQUIRE( Factorial(<span class="dv">3</span>) == <span class="dv">6</span> );</a>
+<a class="sourceLine" id="cb1-12" title="12">    REQUIRE( Factorial(<span class="dv">10</span>) == <span class="dv">3628800</span> );</a>
+<a class="sourceLine" id="cb1-13" title="13">}</a></code></pre></div>
+<p>Produces this output when run:</p>
+<pre><code>===============================================================================
+All tests passed (4 assertions in 1 test case)
+
+</code></pre>
+</section><section id="principles" class="slide level3">
+<h3>Principles</h3>
+<p>So, typically we have</p>
+<ul>
+<li>Some <code>#include</code> to get test framework</li>
+<li>Our code that we want to test</li>
+<li>Then make some assertions</li>
+</ul>
+</section><section id="catch-googletest" class="slide level3">
+<h3>Catch / GoogleTest</h3>
+<p>For example, in <a href="https://github.com/philsquared/Catch">Catch</a>:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb3-1" title="1">    <span class="co">// TEST_CASE(&lt;unique test name&gt;, &lt;test case name&gt;)</span></a>
+<a class="sourceLine" id="cb3-2" title="2">    TEST_CASE( <span class="st">&quot;Factorials are computed&quot;</span>, <span class="st">&quot;[factorial]&quot;</span> ) {</a>
+<a class="sourceLine" id="cb3-3" title="3">        REQUIRE( Factorial(<span class="dv">2</span>) == <span class="dv">2</span> );</a>
+<a class="sourceLine" id="cb3-4" title="4">        REQUIRE( Factorial(<span class="dv">3</span>) == <span class="dv">6</span> );</a>
+<a class="sourceLine" id="cb3-5" title="5">    }</a></code></pre></div>
+<p>In <a href="https://code.google.com/p/googletest/">GoogleTest</a>:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" title="1">    <span class="co">// </span><span class="al">TEST</span><span class="co">(&lt;test case name&gt;, &lt;unique test name&gt;)</span></a>
+<a class="sourceLine" id="cb4-2" title="2">    TEST(FactorialTest, HandlesPositiveInput) {</a>
+<a class="sourceLine" id="cb4-3" title="3">      EXPECT_EQ(<span class="dv">2</span>, Factorial(<span class="dv">2</span>));</a>
+<a class="sourceLine" id="cb4-4" title="4">      EXPECT_EQ(<span class="dv">6</span>, Factorial(<span class="dv">3</span>));</a>
+<a class="sourceLine" id="cb4-5" title="5">    }</a></code></pre></div>
+<p>all done via C++ macros.</p>
+</section><section id="tests-that-fail" class="slide level3">
+<h3>Tests That Fail</h3>
+<p>What about Factorial of zero? Adding</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb5-1" title="1">    REQUIRE( Factorial(<span class="dv">0</span>) == <span class="dv">1</span> );</a></code></pre></div>
+<p>Produces something like:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb6-1" title="1">    factorial2.cc:<span class="dv">9</span>: FAILED:</a>
+<a class="sourceLine" id="cb6-2" title="2">    REQUIRE( Factorial(<span class="dv">0</span>) == <span class="dv">1</span> )</a>
+<a class="sourceLine" id="cb6-3" title="3">    with expansion:</a>
+<a class="sourceLine" id="cb6-4" title="4">    <span class="dv">0</span> == <span class="dv">1</span></a></code></pre></div>
+</section><section id="fix-the-failing-test" class="slide level3">
+<h3>Fix the Failing Test</h3>
+<p>Leading to:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb7-1" title="1"><span class="pp">#define CATCH_CONFIG_MAIN  </span><span class="co">// This tells Catch to provide a main() - only do this in one cpp file</span></a>
+<a class="sourceLine" id="cb7-2" title="2"><span class="pp">#include </span><span class="im">&quot;../catch/catch.hpp&quot;</span></a>
+<a class="sourceLine" id="cb7-3" title="3"></a>
+<a class="sourceLine" id="cb7-4" title="4"><span class="dt">unsigned</span> <span class="dt">int</span> Factorial( <span class="dt">unsigned</span> <span class="dt">int</span> number ) {</a>
+<a class="sourceLine" id="cb7-5" title="5">    <span class="co">//return number &lt;= 1 ? number : Factorial(number-1)*number;</span></a>
+<a class="sourceLine" id="cb7-6" title="6">    <span class="cf">return</span> number &gt; <span class="dv">1</span> ? Factorial(number-<span class="dv">1</span>)*number : <span class="dv">1</span>;</a>
+<a class="sourceLine" id="cb7-7" title="7">}</a>
+<a class="sourceLine" id="cb7-8" title="8"></a>
+<a class="sourceLine" id="cb7-9" title="9">TEST_CASE( <span class="st">&quot;Factorials are computed&quot;</span>, <span class="st">&quot;[factorial]&quot;</span> ) {</a>
+<a class="sourceLine" id="cb7-10" title="10">    REQUIRE( Factorial(<span class="dv">0</span>) == <span class="dv">1</span> );</a>
+<a class="sourceLine" id="cb7-11" title="11">    REQUIRE( Factorial(<span class="dv">1</span>) == <span class="dv">1</span> );</a>
+<a class="sourceLine" id="cb7-12" title="12">    REQUIRE( Factorial(<span class="dv">2</span>) == <span class="dv">2</span> );</a>
+<a class="sourceLine" id="cb7-13" title="13">    REQUIRE( Factorial(<span class="dv">3</span>) == <span class="dv">6</span> );</a>
+<a class="sourceLine" id="cb7-14" title="14">    REQUIRE( Factorial(<span class="dv">10</span>) == <span class="dv">3628800</span> );</a>
+<a class="sourceLine" id="cb7-15" title="15">}</a></code></pre></div>
+<p>which passes:</p>
+<pre><code>===============================================================================
+All tests passed (5 assertions in 1 test case)
+
+</code></pre>
+</section><section id="test-macros" class="slide level3">
+<h3>Test Macros</h3>
+<p>Each framework has a variety of macros to test for failure. <a href="https://github.com/philsquared/Catch">Catch</a> has:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb9-1" title="1">    REQUIRE(expression); <span class="co">// stop if fail</span></a>
+<a class="sourceLine" id="cb9-2" title="2">    CHECK(expression);   <span class="co">// doesn&#39;t stop if fails</span></a></code></pre></div>
+<p>If an exception is thrown, it’s caught, reported and counts as a failure.</p>
+<p>Examples:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb10-1" title="1">    CHECK( str == <span class="st">&quot;string value&quot;</span> );</a>
+<a class="sourceLine" id="cb10-2" title="2">    CHECK( thisReturnsTrue() );</a>
+<a class="sourceLine" id="cb10-3" title="3">    REQUIRE( i == <span class="dv">42</span> );</a></code></pre></div>
+<p>Others:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb11-1" title="1">    REQUIRE_FALSE( expression )</a>
+<a class="sourceLine" id="cb11-2" title="2">    CHECK_FALSE( expression )</a>
+<a class="sourceLine" id="cb11-3" title="3">    REQUIRE_THROWS( expression ) <span class="er"># Must throw an exception</span></a>
+<a class="sourceLine" id="cb11-4" title="4">    CHECK_THROWS( expression ) <span class="er"># Must throw an exception, and continue testing</span></a>
+<a class="sourceLine" id="cb11-5" title="5">    REQUIRE_THROWS_AS( expression, exception type )</a>
+<a class="sourceLine" id="cb11-6" title="6">    CHECK_THROWS_AS( expression, exception type )</a>
+<a class="sourceLine" id="cb11-7" title="7">    REQUIRE_NOTHROW( expression )</a>
+<a class="sourceLine" id="cb11-8" title="8">    CHECK_NOTHROW( expression )</a></code></pre></div>
+</section><section id="testing-for-failure" class="slide level3">
+<h3>Testing for Failure</h3>
+<p>To re-iterate:</p>
+<ul>
+<li>You should test failure cases
+<ul>
+<li>Force a failure</li>
+<li>Check that exception is thrown</li>
+<li>If exception is thrown, test passes</li>
+<li>(Some people get confused, expecting test to fail)</li>
+</ul></li>
+<li>Examples
+<ul>
+<li>Saving to invalid file name</li>
+<li>Negative numbers passed into double arguments</li>
+<li>Invalid Physical quantities (e.g. -300 Kelvin)</li>
+</ul></li>
+</ul>
+</section><section id="setuptear-down" class="slide level3">
+<h3>Setup/Tear Down</h3>
+<ul>
+<li>Some tests require objects to exist in memory</li>
+<li>These should be set up
+<ul>
+<li>for each test</li>
+<li>for a group of tests</li>
+</ul></li>
+<li>Frameworks do differ in this regards</li>
+</ul>
+</section><section id="setuptear-down-in-catch" class="slide level3">
+<h3>Setup/Tear Down in Catch</h3>
+<p>Referring to the <a href="https://github.com/philsquared/Catch/blob/master/docs/tutorial.md">Catch Tutorial</a>:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb12-1" title="1">TEST_CASE( <span class="st">&quot;vectors can be sized and resized&quot;</span>, <span class="st">&quot;[vector]&quot;</span> ) {</a>
+<a class="sourceLine" id="cb12-2" title="2"></a>
+<a class="sourceLine" id="cb12-3" title="3">    <span class="bu">std::</span>vector&lt;<span class="dt">int</span>&gt; v( <span class="dv">5</span> );</a>
+<a class="sourceLine" id="cb12-4" title="4"></a>
+<a class="sourceLine" id="cb12-5" title="5">    REQUIRE( v.size() == <span class="dv">5</span> );</a>
+<a class="sourceLine" id="cb12-6" title="6">    REQUIRE( v.capacity() &gt;= <span class="dv">5</span> );</a>
+<a class="sourceLine" id="cb12-7" title="7"></a>
+<a class="sourceLine" id="cb12-8" title="8">    SECTION( <span class="st">&quot;resizing bigger changes size and capacity&quot;</span> ) {</a>
+<a class="sourceLine" id="cb12-9" title="9">        v.resize( <span class="dv">10</span> );</a>
+<a class="sourceLine" id="cb12-10" title="10"></a>
+<a class="sourceLine" id="cb12-11" title="11">        REQUIRE( v.size() == <span class="dv">10</span> );</a>
+<a class="sourceLine" id="cb12-12" title="12">        REQUIRE( v.capacity() &gt;= <span class="dv">10</span> );</a>
+<a class="sourceLine" id="cb12-13" title="13">    }</a>
+<a class="sourceLine" id="cb12-14" title="14">    SECTION( <span class="st">&quot;resizing smaller changes size but not capacity&quot;</span> ) {</a>
+<a class="sourceLine" id="cb12-15" title="15">        v.resize( <span class="dv">0</span> );</a>
+<a class="sourceLine" id="cb12-16" title="16"></a>
+<a class="sourceLine" id="cb12-17" title="17">        REQUIRE( v.size() == <span class="dv">0</span> );</a>
+<a class="sourceLine" id="cb12-18" title="18">        REQUIRE( v.capacity() &gt;= <span class="dv">5</span> );</a>
+<a class="sourceLine" id="cb12-19" title="19">    }</a>
+<a class="sourceLine" id="cb12-20" title="20">    SECTION( <span class="st">&quot;reserving bigger changes capacity but not size&quot;</span> ) {</a>
+<a class="sourceLine" id="cb12-21" title="21">        v.reserve( <span class="dv">10</span> );</a>
+<a class="sourceLine" id="cb12-22" title="22"></a>
+<a class="sourceLine" id="cb12-23" title="23">        REQUIRE( v.size() == <span class="dv">5</span> );</a>
+<a class="sourceLine" id="cb12-24" title="24">        REQUIRE( v.capacity() &gt;= <span class="dv">10</span> );</a>
+<a class="sourceLine" id="cb12-25" title="25">    }</a>
+<a class="sourceLine" id="cb12-26" title="26">    SECTION( <span class="st">&quot;reserving smaller does not change size or capacity&quot;</span> ) {</a>
+<a class="sourceLine" id="cb12-27" title="27">        v.reserve( <span class="dv">0</span> );</a>
+<a class="sourceLine" id="cb12-28" title="28"></a>
+<a class="sourceLine" id="cb12-29" title="29">        REQUIRE( v.size() == <span class="dv">5</span> );</a>
+<a class="sourceLine" id="cb12-30" title="30">        REQUIRE( v.capacity() &gt;= <span class="dv">5</span> );</a>
+<a class="sourceLine" id="cb12-31" title="31">    }</a>
+<a class="sourceLine" id="cb12-32" title="32">}</a></code></pre></div>
+<p>So, Setup/Tear down is done before/after each section.</p>
+</section></section>
+<section><section id="unit-testing-tips" class="title-slide slide level2"><h2>Unit Testing Tips</h2></section><section id="c-design" class="slide level3">
+<h3>C++ design</h3>
+<ul>
+<li>Stuff from above applies to Classes / Functions</li>
+<li>Think about arguments:
+<ul>
+<li>Code should be hard to use incorrectly.</li>
+<li>Use <code>const</code>, <code>unsigned</code> etc.</li>
+<li>Testing forces you to sort these out.</li>
+</ul></li>
+</ul>
+</section><section id="test-driven-development-tdd" class="slide level3">
+<h3>Test Driven Development (TDD)</h3>
+<ul>
+<li>Methodology
+<ol type="1">
+<li>Write a test</li>
+<li>Run test, should fail</li>
+<li>Implement/Debug functionality</li>
+<li>Run test
+<ol type="1">
+<li>if succeed goto 5</li>
+<li>else goto 3</li>
+</ol></li>
+<li>Refactor to tidy up</li>
+</ol></li>
+</ul>
+</section><section id="tdd-in-practice" class="slide level3">
+<h3>TDD in practice</h3>
+<ul>
+<li>Aim to get good coverage</li>
+<li>Some people quote 70% or more</li>
+<li>What are the downsides?</li>
+<li>Don’t write ‘brittle’ tests</li>
+</ul>
+</section><section id="behaviour-driven-development-bdd" class="slide level3">
+<h3>Behaviour Driven Development (BDD)</h3>
+<ul>
+<li>Behaviour Driven Development (BDD)
+<ul>
+<li>Refers to a <a href="https://en.wikipedia.org/wiki/Behavior-driven_development">whole area</a> of software engineering</li>
+<li>With associated tools and practices</li>
+<li>Think about end-user perspective</li>
+<li>Think about the desired behaviour not the implementation</li>
+<li>See <a href="https://codeutopia.net/blog/2015/03/01/unit-testing-tdd-and-bdd/">Jani Hartikainen</a> article.</li>
+</ul></li>
+</ul>
+</section><section id="tdd-vs-bdd" class="slide level3">
+<h3>TDD Vs BDD</h3>
+<ul>
+<li>TDD
+<ul>
+<li>Test/Design based on methods available</li>
+<li>Often ties in implementation details</li>
+</ul></li>
+<li>BDD
+<ul>
+<li>Test/Design based on behaviour<br />
+</li>
+<li>Code to interfaces (later in course)</li>
+</ul></li>
+<li>Subtly different</li>
+<li>Aim for BDD</li>
+</ul>
+</section><section id="anti-pattern-1-settersgetters" class="slide level3">
+<h3>Anti-Pattern 1: Setters/Getters</h3>
+<p>Testing every Setter/Getter.</p>
+<p>Consider:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb13-1" title="1">   <span class="kw">class</span> Atom {</a>
+<a class="sourceLine" id="cb13-2" title="2"></a>
+<a class="sourceLine" id="cb13-3" title="3">     <span class="kw">public</span>:</a>
+<a class="sourceLine" id="cb13-4" title="4">       <span class="dt">void</span> SetAtomicNumber(<span class="at">const</span> <span class="dt">int</span>&amp; number) { <span class="va">m_AtomicNumber</span> = number; }</a>
+<a class="sourceLine" id="cb13-5" title="5">       <span class="dt">int</span> GetAtomicNumber() <span class="at">const</span> { <span class="cf">return</span> <span class="va">m_AtomicNumber</span>; }</a>
+<a class="sourceLine" id="cb13-6" title="6">       <span class="dt">void</span> SetName(<span class="at">const</span> <span class="bu">std::</span>string&amp; name) { <span class="va">m_Name</span> = name; }</a>
+<a class="sourceLine" id="cb13-7" title="7">       <span class="bu">std::</span>string GetName() <span class="at">const</span> { <span class="cf">return</span> <span class="va">m_Name</span>; }</a>
+<a class="sourceLine" id="cb13-8" title="8">     <span class="kw">private</span>:</a>
+<a class="sourceLine" id="cb13-9" title="9">       <span class="dt">int</span> <span class="va">m_AtomicNumber</span>;</a>
+<a class="sourceLine" id="cb13-10" title="10">       <span class="bu">std::</span>string <span class="va">m_Name</span>;</a>
+<a class="sourceLine" id="cb13-11" title="11">   };</a></code></pre></div>
+<p>and tests like:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb14-1" title="1">    TEST_CASE( <span class="st">&quot;Testing Setters/Getters&quot;</span>, <span class="st">&quot;[Atom]&quot;</span> ) {</a>
+<a class="sourceLine" id="cb14-2" title="2"></a>
+<a class="sourceLine" id="cb14-3" title="3">        Atom a;</a>
+<a class="sourceLine" id="cb14-4" title="4"></a>
+<a class="sourceLine" id="cb14-5" title="5">        a.SetAtomicNumber(<span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb14-6" title="6">        REQUIRE( a.GetAtomicNumber() == <span class="dv">1</span>);</a>
+<a class="sourceLine" id="cb14-7" title="7">        a.SetName(<span class="st">&quot;Hydrogen&quot;</span>);</a>
+<a class="sourceLine" id="cb14-8" title="8">        REQUIRE( a.GetName() == <span class="st">&quot;Hydrogen&quot;</span>);</a></code></pre></div>
+<ul>
+<li>It feels tedious</li>
+<li>But you want good coverage</li>
+<li>This often puts people off testing</li>
+<li>It also produces “brittle”, where 1 change breaks many things</li>
+</ul>
+</section><section id="anti-pattern-1-suggestion." class="slide level3">
+<h3>Anti-Pattern 1: Suggestion.</h3>
+<ul>
+<li>Focus on behaviour.
+<ul>
+<li>What would end-user expect to be doing?</li>
+<li>How would end-user be using this class?</li>
+<li>Write tests that follow the use-case</li>
+<li>Gives a more logical grouping</li>
+<li>One test can cover &gt; 1 function</li>
+<li>i.e. move away from slavishly testing each function</li>
+</ul></li>
+<li>Minimise interface.
+<ul>
+<li>Provide the bare number of methods</li>
+<li>Don’t provide setters if you don’t want them</li>
+<li>Don’t provide getters unless the user needs something</li>
+<li>Less to test. Use documentation to describe why.</li>
+</ul></li>
+</ul>
+</section><section id="anti-pattern-2-constructing-dependent-classes" class="slide level3">
+<h3>Anti-Pattern 2: Constructing Dependent Classes</h3>
+<ul>
+<li>Sometimes, by necessity we test groups of classes</li>
+<li>Or one class genuinely Has-A contained class</li>
+<li>But the contained class is expensive, or could be changed in future</li>
+</ul>
+</section><section id="anti-pattern-2-suggestion" class="slide level3">
+<h3>Anti-Pattern 2: Suggestion</h3>
+<ul>
+<li>Read up on <a href="https://martinfowler.com/articles/injection.html">Dependency Injection</a></li>
+<li>Enables you to create and inject dummy test classes</li>
+<li>So, testing again used to break down design, and increase flexibility</li>
+</ul>
+</section><section id="summary-bdd-vs-tdd" class="slide level3">
+<h3>Summary BDD Vs TDD</h3>
+<p>Aim to write:</p>
+<ul>
+<li>Most concise description of requirements as unit tests</li>
+<li>Smallest amount of code to pass tests</li>
+<li>… i.e. based on behaviour</li>
+</ul>
+</section></section>
+<section><section id="any-questions" class="title-slide slide level2"><h2>Any Questions?</h2></section><section id="homework---overview" class="slide level3">
+<h3>Homework - Overview</h3>
+<ul>
+<li>Example git repo, CMake, Catch template project:
+<ul>
+<li><a href="https://github.com/MattClarkson/CMakeCatch2">CMakeCatch2</a> - Simple</li>
+<li><a href="https://github.com/MattClarkson/CMakeCatchTemplate">CMakeCatchTemplate</a> - Complex</li>
+</ul></li>
+<li>You should
+<ul>
+<li>Clone, Build.</li>
+<li>Add unit test in Testing</li>
+<li>Run via ctest</li>
+<li>Find log file</li>
+</ul></li>
+</ul>
+</section><section id="homework---7" class="slide level3">
+<h3>Homework - 7</h3>
+<ul>
+<li>Imagine a simple function, e.g. to add two numbers.</li>
+<li>Play with unit tests until you understand the difference between:</li>
+</ul>
+<div class="sourceCode" id="cb15"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb15-1" title="1"><span class="dt">int</span> AddTwoNumbers(<span class="dt">int</span> a, <span class="dt">int</span> b);</a>
+<a class="sourceLine" id="cb15-2" title="2"><span class="dt">int</span> AddTwoNumbers(<span class="at">const</span> <span class="dt">int</span>&amp; a, <span class="at">const</span> <span class="dt">int</span>&amp;b);</a>
+<a class="sourceLine" id="cb15-3" title="3"><span class="dt">void</span> AddTwoNumbers(<span class="dt">int</span>* a, <span class="dt">int</span>*b, <span class="dt">int</span>* output);</a>
+<a class="sourceLine" id="cb15-4" title="4"><span class="dt">void</span> AddTwoNumbers(<span class="at">const</span> <span class="dt">int</span>* <span class="at">const</span> a, <span class="at">const</span> <span class="dt">int</span>* <span class="at">const</span> b);</a></code></pre></div>
+<p>Now imagine, instead of integers, the variables all contained a large Image. Which type of function declaration would you use?</p>
+</section><section id="homework---8" class="slide level3">
+<h3>Homework - 8</h3>
+<ul>
+<li>Write a Fraction class</li>
+<li>Write a print function to print nicely formatted fractions</li>
+<li>Does the print function live inside or outside of the class?</li>
+<li>Write a method <code>simplify()</code> which will simplify the fraction.</li>
+<li>Unit test until you have at least got the hang of unit testing</li>
+<li>Review your function arguments and return types</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: "100%",
+        height: "100%",
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.1,
+        maxScale: 1.5,
+        math: {
+          mathjax: '/usr/share/javascript/mathjax/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>

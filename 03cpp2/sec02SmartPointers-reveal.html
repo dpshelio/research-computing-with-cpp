@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title>Smart Pointers</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/night.css" id="theme">
+  <link rel="stylesheet" href="http://lab.hakim.se/reveal-js/css/theme/night.css"/>
+  <link rel="stylesheet" href="/research-computing-with-cpp//css/ucl_reveal.css"/>
+  <link rel="stylesheet" href="/research-computing-with-cpp//site-styles/reveal.css"/>
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'http://lab.hakim.se/reveal-js/css/print/pdf.css' : 'http://lab.hakim.se/reveal-js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="http://lab.hakim.se/reveal-js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">Smart Pointers</h1>
+</section>
+
+<section><section id="smart-pointers" class="title-slide slide level2"><h2>Smart Pointers</h2></section><section id="use-of-raw-pointers" class="slide level3">
+<h3>Use of Raw Pointers</h3>
+<ul>
+<li>Given a pointer passed to a function</li>
+</ul>
+<pre><code>   void DoSomethingClever(int *a) 
+   {
+     // write some code
+   }</code></pre>
+<ul>
+<li>How do we use the pointer?</li>
+<li>What problems are there?</li>
+</ul>
+</section><section id="problems-with-raw-pointers" class="slide level3">
+<h3>Problems with Raw Pointers</h3>
+<ul>
+<li>From <a href="https://www.amazon.co.uk/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8&amp;qid=1484571499&amp;sr=8-1&amp;keywords=Effective+Modern+C%2B%2B">“Effective Modern C++”, Meyers, p117</a>.
+<ul>
+<li>If you are done, do you destroy it?</li>
+<li>How to destroy it? Call <code>delete</code> or some method first: <code>a-&gt;Shutdown();</code></li>
+<li>Single object or array?</li>
+<li><code>delete</code> or <code>delete[]</code>?</li>
+<li>How to ensure the whole system only deletes it once?</li>
+<li>Is it dangling, if I don’t delete it?</li>
+</ul></li>
+</ul>
+</section><section id="use-smart-pointers" class="slide level3">
+<h3>Use Smart Pointers</h3>
+<ul>
+<li><code>new/delete</code> on raw pointers not good enough</li>
+<li>So, use Smart Pointers
+<ul>
+<li>automatically delete pointed to object</li>
+<li>explicit control over sharing</li>
+<li>i.e. smarter</li>
+</ul></li>
+<li>Smart Pointers model the “ownership”</li>
+</ul>
+</section><section id="further-reading" class="slide level3">
+<h3>Further Reading</h3>
+<ul>
+<li>Notes here are based on these:
+<ul>
+<li><a href="http://www.umich.edu/~eecs381/handouts/C++11_smart_ptrs.pdf">David Kieras online paper</a></li>
+<li><a href="https://www.amazon.co.uk/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8&amp;qid=1484571499&amp;sr=8-1&amp;keywords=Effective+Modern+C%2B%2B">“Effective Modern C++”, Meyers, ch4</a></li>
+</ul></li>
+</ul>
+</section><section id="standard-library-smart-pointers" class="slide level3">
+<h3>Standard Library Smart Pointers</h3>
+<ul>
+<li>Here we teach Standard Library
+<ul>
+<li><a href="http://en.cppreference.com/w/cpp/memory/unique_ptr">std::unique_ptr</a> - models <em>has-a</em> but also unique ownership</li>
+<li><a href="http://en.cppreference.com/w/cpp/memory/shared_ptr">std::shared_ptr</a> - models <em>has-a</em> but shared ownership</li>
+<li><a href="http://en.cppreference.com/w/cpp/memory/weak_ptr">std::weak_ptr</a> - temporary reference, breaks circular references</li>
+</ul></li>
+</ul>
+</section><section id="stack-allocated---no-leak." class="slide level3">
+<h3>Stack Allocated - No Leak.</h3>
+<ul>
+<li>To recap:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb2-1" title="1"><span class="pp">#include </span><span class="im">&quot;Fraction.h&quot;</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="dt">int</span> main() {</a>
+<a class="sourceLine" id="cb2-3" title="3">  Fraction f(<span class="dv">1</span>,<span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb2-4" title="4">}</a>
+<a class="sourceLine" id="cb2-5" title="5"></a></code></pre></div>
+<ul>
+<li>Gives:</li>
+</ul>
+<pre><code>I&#39;m being deleted
+</code></pre>
+<ul>
+<li>So stack allocated objects are deleted, when stack unwinds.</li>
+</ul>
+</section><section id="heap-allocated---leak." class="slide level3">
+<h3>Heap Allocated - Leak.</h3>
+<ul>
+<li>To recap:</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb4-1" title="1"><span class="pp">#include </span><span class="im">&quot;Fraction.h&quot;</span></a>
+<a class="sourceLine" id="cb4-2" title="2"><span class="dt">int</span> main() {</a>
+<a class="sourceLine" id="cb4-3" title="3">  Fraction *f = <span class="kw">new</span> Fraction(<span class="dv">1</span>,<span class="dv">4</span>);</a>
+<a class="sourceLine" id="cb4-4" title="4">}</a>
+<a class="sourceLine" id="cb4-5" title="5"></a></code></pre></div>
+<ul>
+<li>Gives:</li>
+</ul>
+<pre><code></code></pre>
+<ul>
+<li>So heap allocated objects are not deleted.</li>
+<li>Its the pointer (stack allocated) that’s deleted.</li>
+</ul>
+</section><section id="unique-ptr---unique-ownership" class="slide level3">
+<h3>Unique Ptr - Unique Ownership</h3>
+<ul>
+<li>So:</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb6-1" title="1"><span class="pp">#include </span><span class="im">&quot;Fraction.h&quot;</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="pp">#include </span><span class="im">&lt;memory&gt;</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="dt">int</span> main() {</a>
+<a class="sourceLine" id="cb6-4" title="4">  <span class="bu">std::</span>unique_ptr&lt;Fraction&gt; f(<span class="kw">new</span> Fraction(<span class="dv">1</span>,<span class="dv">4</span>));</a>
+<a class="sourceLine" id="cb6-5" title="5">}</a>
+<a class="sourceLine" id="cb6-6" title="6"></a></code></pre></div>
+<ul>
+<li>Gives:</li>
+</ul>
+<pre><code>I&#39;m being deleted
+</code></pre>
+<ul>
+<li>And object is deleted.</li>
+<li>Is that it?</li>
+</ul>
+</section><section id="unique-ptr---move" class="slide level3">
+<h3>Unique Ptr - Move?</h3>
+<ul>
+<li>Does move work?</li>
+</ul>
+<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb8-1" title="1"><span class="pp">#include </span><span class="im">&quot;Fraction.h&quot;</span></a>
+<a class="sourceLine" id="cb8-2" title="2"><span class="pp">#include </span><span class="im">&lt;memory&gt;</span></a>
+<a class="sourceLine" id="cb8-3" title="3"><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></a>
+<a class="sourceLine" id="cb8-4" title="4"></a>
+<a class="sourceLine" id="cb8-5" title="5"><span class="dt">int</span> main() {</a>
+<a class="sourceLine" id="cb8-6" title="6">  <span class="bu">std::</span>unique_ptr&lt;Fraction&gt; f(<span class="kw">new</span> Fraction(<span class="dv">1</span>,<span class="dv">4</span>));</a>
+<a class="sourceLine" id="cb8-7" title="7">  <span class="co">// std::unique_ptr&lt;Fraction&gt; f2(f); // compile error</span></a>
+<a class="sourceLine" id="cb8-8" title="8"></a>
+<a class="sourceLine" id="cb8-9" title="9">  <span class="bu">std::</span>cerr &lt;&lt; <span class="st">&quot;f=&quot;</span> &lt;&lt; f.get() &lt;&lt; <span class="bu">std::</span>endl;</a>
+<a class="sourceLine" id="cb8-10" title="10"></a>
+<a class="sourceLine" id="cb8-11" title="11">  <span class="bu">std::</span>unique_ptr&lt;Fraction&gt; f2;</a>
+<a class="sourceLine" id="cb8-12" title="12">  <span class="co">// f2 = f; // compile error</span></a>
+<a class="sourceLine" id="cb8-13" title="13">  <span class="co">// f2.reset(f.get()); // bad idea</span></a>
+<a class="sourceLine" id="cb8-14" title="14"></a>
+<a class="sourceLine" id="cb8-15" title="15">  f2.reset(f.release());</a>
+<a class="sourceLine" id="cb8-16" title="16">  <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;f=&quot;</span> &lt;&lt; f.get() &lt;&lt; <span class="st">&quot;, f2=&quot;</span> &lt;&lt; f2.get() &lt;&lt; <span class="bu">std::</span>endl;</a>
+<a class="sourceLine" id="cb8-17" title="17"></a>
+<a class="sourceLine" id="cb8-18" title="18">  f = <span class="bu">std::</span>move(f2);</a>
+<a class="sourceLine" id="cb8-19" title="19">  <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;f=&quot;</span> &lt;&lt; f.get() &lt;&lt; <span class="st">&quot;, f2=&quot;</span> &lt;&lt; f2.get() &lt;&lt; <span class="bu">std::</span>endl;</a>
+<a class="sourceLine" id="cb8-20" title="20">}</a>
+<a class="sourceLine" id="cb8-21" title="21"></a></code></pre></div>
+<ul>
+<li>Gives:</li>
+</ul>
+<pre><code>f=0, f2=0x56142bb41eb0
+f=0x56142bb41eb0, f2=0
+I&#39;m being deleted
+</code></pre>
+<ul>
+<li>We see that API makes difficult to use incorrectly.</li>
+</ul>
+</section><section id="unique-ptr---usage-1" class="slide level3">
+<h3>Unique Ptr - Usage 1</h3>
+<ul>
+<li>Forces you to think about ownership
+<ul>
+<li>No copy constructor</li>
+<li>No assignment</li>
+</ul></li>
+<li>Consequently
+<ul>
+<li>Can’t pass pointer by value</li>
+<li>Use move semantics for placing in containers</li>
+</ul></li>
+</ul>
+</section><section id="unique-ptr---usage-2" class="slide level3">
+<h3>Unique Ptr - Usage 2</h3>
+<ul>
+<li>Put raw pointer STRAIGHT into unique_ptr</li>
+<li>see <code>std::make_unique</code> in C++14.</li>
+</ul>
+<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb10-1" title="1"><span class="pp">#include </span><span class="im">&quot;Fraction.h&quot;</span></a>
+<a class="sourceLine" id="cb10-2" title="2"><span class="pp">#include </span><span class="im">&lt;memory&gt;</span></a>
+<a class="sourceLine" id="cb10-3" title="3"><span class="dt">int</span> main() {</a>
+<a class="sourceLine" id="cb10-4" title="4">  <span class="bu">std::</span>unique_ptr&lt;Fraction&gt; f(<span class="kw">new</span> Fraction(<span class="dv">1</span>,<span class="dv">4</span>));</a>
+<a class="sourceLine" id="cb10-5" title="5">}</a>
+<a class="sourceLine" id="cb10-6" title="6"></a></code></pre></div>
+</section><section id="shared-ptr---shared-ownership" class="slide level3">
+<h3>Shared Ptr - Shared Ownership</h3>
+<ul>
+<li>Many pointers pointing to same object</li>
+<li>Object only deleted if no pointers refer to it</li>
+<li>Achieved via reference counting</li>
+</ul>
+</section><section id="shared-ptr-control-block" class="slide level3">
+<h3>Shared Ptr Control Block</h3>
+<ul>
+<li><p>Won’t go to too many details: <img src="https://www.safaribooksonline.com/library/view/effective-modern-c/9781491908419/assets/emcp_04in02.png" alt="Control Block"></p></li>
+<li><p>From <a href="https://www.amazon.co.uk/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8&amp;qid=1484571499&amp;sr=8-1&amp;keywords=Effective+Modern+C%2B%2B">“Effective Modern C++”, Meyers, p140</a></p></li>
+</ul>
+</section><section id="shared-ptr---usage-1" class="slide level3">
+<h3>Shared Ptr - Usage 1</h3>
+<ul>
+<li>Place raw pointer straight into shared_ptr</li>
+<li>Pass to functions, reference or by value</li>
+<li>Copy/Move constructors and assignment all implemented</li>
+</ul>
+</section><section id="shared-ptr---usage-2" class="slide level3">
+<h3>Shared Ptr - Usage 2</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb11-1" title="1"><span class="pp">#include </span><span class="im">&quot;Fraction.h&quot;</span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="pp">#include </span><span class="im">&lt;memory&gt;</span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="dt">void</span> divideBy2(<span class="at">const</span> <span class="bu">std::</span>shared_ptr&lt;Fraction&gt;&amp; f)</a>
+<a class="sourceLine" id="cb11-5" title="5">{</a>
+<a class="sourceLine" id="cb11-6" title="6">  f-&gt;denominator *= <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb11-7" title="7">}</a>
+<a class="sourceLine" id="cb11-8" title="8"><span class="dt">void</span> multiplyBy2(<span class="at">const</span> <span class="bu">std::</span>shared_ptr&lt;Fraction&gt; f)</a>
+<a class="sourceLine" id="cb11-9" title="9">{</a>
+<a class="sourceLine" id="cb11-10" title="10">  f-&gt;numerator *= <span class="dv">2</span>;</a>
+<a class="sourceLine" id="cb11-11" title="11">}</a>
+<a class="sourceLine" id="cb11-12" title="12"><span class="dt">int</span> main() {</a>
+<a class="sourceLine" id="cb11-13" title="13">  <span class="bu">std::</span>shared_ptr&lt;Fraction&gt; f1(<span class="kw">new</span> Fraction(<span class="dv">1</span>,<span class="dv">4</span>));</a>
+<a class="sourceLine" id="cb11-14" title="14">  <span class="bu">std::</span>shared_ptr&lt;Fraction&gt; f2 = f1;</a>
+<a class="sourceLine" id="cb11-15" title="15">  divideBy2(f1);</a>
+<a class="sourceLine" id="cb11-16" title="16">  multiplyBy2(f2);</a>
+<a class="sourceLine" id="cb11-17" title="17">  <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;Value=&quot;</span> &lt;&lt; f1-&gt;numerator &lt;&lt; <span class="st">&quot;/&quot;</span> &lt;&lt; f1-&gt;denominator &lt;&lt; <span class="bu">std::</span>endl;</a>
+<a class="sourceLine" id="cb11-18" title="18">  <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;f1=&quot;</span> &lt;&lt; f1.get() &lt;&lt; <span class="st">&quot;, f2=&quot;</span> &lt;&lt; f2.get() &lt;&lt; <span class="bu">std::</span>endl;</a>
+<a class="sourceLine" id="cb11-19" title="19">}</a>
+<a class="sourceLine" id="cb11-20" title="20"></a></code></pre></div>
+</section><section id="shared-ptr---usage-3" class="slide level3">
+<h3>Shared Ptr - Usage 3</h3>
+<ul>
+<li>Watch out for exceptions.</li>
+<li><a href="https://www.amazon.co.uk/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8&amp;qid=1484571499&amp;sr=8-1&amp;keywords=Effective+Modern+C%2B%2B">“Effective Modern C++”, Meyers, p140</a></li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb12-1" title="1"><span class="pp">#include </span><span class="im">&quot;Fraction.h&quot;</span></a>
+<a class="sourceLine" id="cb12-2" title="2"><span class="pp">#include </span><span class="im">&lt;memory&gt;</span></a>
+<a class="sourceLine" id="cb12-3" title="3"><span class="pp">#include </span><span class="im">&lt;stdexcept&gt;</span></a>
+<a class="sourceLine" id="cb12-4" title="4"><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></a>
+<a class="sourceLine" id="cb12-5" title="5"><span class="dt">int</span> checkSomething(<span class="at">const</span> <span class="bu">std::</span>shared_ptr&lt;Fraction&gt;&amp; f, <span class="at">const</span> <span class="dt">int</span>&amp; i)</a>
+<a class="sourceLine" id="cb12-6" title="6">{</a>
+<a class="sourceLine" id="cb12-7" title="7">  <span class="co">// whatever.</span></a>
+<a class="sourceLine" id="cb12-8" title="8">}</a>
+<a class="sourceLine" id="cb12-9" title="9"><span class="dt">int</span> computeSomethingFirst()</a>
+<a class="sourceLine" id="cb12-10" title="10">{</a>
+<a class="sourceLine" id="cb12-11" title="11">  <span class="co">// what if this throws?</span></a>
+<a class="sourceLine" id="cb12-12" title="12">}</a>
+<a class="sourceLine" id="cb12-13" title="13"><span class="dt">int</span> main()</a>
+<a class="sourceLine" id="cb12-14" title="14">{</a>
+<a class="sourceLine" id="cb12-15" title="15">  <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>shared_ptr&lt;Fraction&gt; &gt;  spaceForLotsOfFractions;</a>
+<a class="sourceLine" id="cb12-16" title="16">  <span class="dt">int</span> result = checkSomething(<span class="bu">std::</span>shared_ptr&lt;Fraction&gt;(<span class="kw">new</span> Fraction(<span class="dv">1</span>,<span class="dv">4</span>)),</a>
+<a class="sourceLine" id="cb12-17" title="17">                              computeSomethingFirst()</a>
+<a class="sourceLine" id="cb12-18" title="18">                             );</a>
+<a class="sourceLine" id="cb12-19" title="19">}</a></code></pre></div>
+</section><section id="shared-ptr---usage-4" class="slide level3">
+<h3>Shared Ptr - Usage 4</h3>
+<ul>
+<li>Prefer <code>std::make_shared</code></li>
+<li>Exception safe</li>
+</ul>
+<div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb13-1" title="1"><span class="pp">#include </span><span class="im">&quot;Fraction.h&quot;</span></a>
+<a class="sourceLine" id="cb13-2" title="2"><span class="pp">#include </span><span class="im">&lt;memory&gt;</span></a>
+<a class="sourceLine" id="cb13-3" title="3"><span class="pp">#include </span><span class="im">&lt;stdexcept&gt;</span></a>
+<a class="sourceLine" id="cb13-4" title="4"><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></a>
+<a class="sourceLine" id="cb13-5" title="5"><span class="dt">int</span> checkSomething(<span class="at">const</span> <span class="bu">std::</span>shared_ptr&lt;Fraction&gt;&amp; f, <span class="at">const</span> <span class="dt">int</span>&amp; i)</a>
+<a class="sourceLine" id="cb13-6" title="6">{</a>
+<a class="sourceLine" id="cb13-7" title="7">  <span class="co">// whatever.</span></a>
+<a class="sourceLine" id="cb13-8" title="8">}</a>
+<a class="sourceLine" id="cb13-9" title="9"><span class="dt">int</span> computeSomethingFirst()</a>
+<a class="sourceLine" id="cb13-10" title="10">{</a>
+<a class="sourceLine" id="cb13-11" title="11">  <span class="co">// what if this throws?</span></a>
+<a class="sourceLine" id="cb13-12" title="12">}</a>
+<a class="sourceLine" id="cb13-13" title="13"><span class="dt">int</span> main()</a>
+<a class="sourceLine" id="cb13-14" title="14">{</a>
+<a class="sourceLine" id="cb13-15" title="15">  <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>shared_ptr&lt;Fraction&gt; &gt;  spaceForLotsOfFractions;</a>
+<a class="sourceLine" id="cb13-16" title="16">  <span class="dt">int</span> result = checkSomething(<span class="bu">std::</span>make_shared&lt;Fraction&gt;(<span class="dv">1</span>,<span class="dv">4</span>),</a>
+<a class="sourceLine" id="cb13-17" title="17">                              computeSomethingFirst()</a>
+<a class="sourceLine" id="cb13-18" title="18">                             );</a>
+<a class="sourceLine" id="cb13-19" title="19">}</a></code></pre></div>
+</section><section id="weak-ptr---why" class="slide level3">
+<h3>Weak Ptr - Why?</h3>
+<ul>
+<li>Like a shared pointer, but doesn’t actually own anything</li>
+<li>Use for example:
+<ul>
+<li>Caches</li>
+<li>Break circular pointers</li>
+</ul></li>
+<li>Limited API</li>
+<li>Not terribly common as most code ends up as hierarchies</li>
+</ul>
+</section><section id="weak-ptr---example" class="slide level3">
+<h3>Weak Ptr - Example</h3>
+<ul>
+<li>See <a href="http://www.umich.edu/~eecs381/handouts/C++11_smart_ptrs.pdf">David Kieras online paper</a></li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode cpp"><code class="sourceCode cpp"><a class="sourceLine" id="cb14-1" title="1"><span class="pp">#include </span><span class="im">&quot;Fraction.h&quot;</span></a>
+<a class="sourceLine" id="cb14-2" title="2"><span class="pp">#include </span><span class="im">&lt;memory&gt;</span></a>
+<a class="sourceLine" id="cb14-3" title="3"><span class="pp">#include </span><span class="im">&lt;iostream&gt;</span></a>
+<a class="sourceLine" id="cb14-4" title="4"><span class="dt">int</span> main() {</a>
+<a class="sourceLine" id="cb14-5" title="5">  <span class="bu">std::</span>shared_ptr&lt;Fraction&gt; s1(<span class="kw">new</span> Fraction(<span class="dv">1</span>,<span class="dv">4</span>));</a>
+<a class="sourceLine" id="cb14-6" title="6">  <span class="bu">std::</span>weak_ptr&lt;Fraction&gt; w1;      <span class="co">// can point to nothing</span></a>
+<a class="sourceLine" id="cb14-7" title="7">  <span class="bu">std::</span>weak_ptr&lt;Fraction&gt; w2 = s1; <span class="co">// assignment from shared</span></a>
+<a class="sourceLine" id="cb14-8" title="8">  <span class="bu">std::</span>weak_ptr&lt;Fraction&gt; w3(s1);  <span class="co">// construction from shared</span></a>
+<a class="sourceLine" id="cb14-9" title="9"></a>
+<a class="sourceLine" id="cb14-10" title="10">  <span class="co">// Can&#39;t be de-referenced!!!</span></a>
+<a class="sourceLine" id="cb14-11" title="11">  <span class="co">// std::cerr &lt;&lt; &quot;Value=&quot; &lt;&lt; w1-&gt;numerator &lt;&lt; &quot;/&quot; &lt;&lt; w1-&gt;denominator &lt;&lt; std::endl;</span></a>
+<a class="sourceLine" id="cb14-12" title="12"></a>
+<a class="sourceLine" id="cb14-13" title="13">  <span class="co">// Needs converting to shared, and checking</span></a>
+<a class="sourceLine" id="cb14-14" title="14">  <span class="bu">std::</span>shared_ptr&lt;Fraction&gt; s2 = w1.lock();</a>
+<a class="sourceLine" id="cb14-15" title="15">  <span class="cf">if</span> (s2)</a>
+<a class="sourceLine" id="cb14-16" title="16">  {</a>
+<a class="sourceLine" id="cb14-17" title="17">    <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;Object w1 exists=&quot;</span> &lt;&lt; s2-&gt;numerator &lt;&lt; <span class="st">&quot;/&quot;</span> &lt;&lt; s2-&gt;denominator &lt;&lt; <span class="bu">std::</span>endl;</a>
+<a class="sourceLine" id="cb14-18" title="18">  }</a>
+<a class="sourceLine" id="cb14-19" title="19"></a>
+<a class="sourceLine" id="cb14-20" title="20">  <span class="co">// Or, create shared, check for exception</span></a>
+<a class="sourceLine" id="cb14-21" title="21">  <span class="bu">std::</span>shared_ptr&lt;Fraction&gt; s3(w2);</a>
+<a class="sourceLine" id="cb14-22" title="22">  <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;Object must exists=&quot;</span> &lt;&lt; s3-&gt;numerator &lt;&lt; <span class="st">&quot;/&quot;</span> &lt;&lt; s3-&gt;denominator &lt;&lt; <span class="bu">std::</span>endl;</a>
+<a class="sourceLine" id="cb14-23" title="23">}</a>
+<a class="sourceLine" id="cb14-24" title="24"></a></code></pre></div>
+</section><section id="final-advice" class="slide level3">
+<h3>Final Advice</h3>
+<ul>
+<li>Benefits of immediate, fine-grained, garbage collection</li>
+<li>Just ask <a href="https://www.amazon.co.uk/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8&amp;qid=1484571499&amp;sr=8-1&amp;keywords=Effective+Modern+C%2B%2B">Scott Meyers!</a>
+<ul>
+<li>Use <code>unique_ptr</code> for unique ownership</li>
+<li>Easy to convert <code>unique_ptr</code> to <code>shared_ptr</code></li>
+<li>But not the reverse</li>
+<li>Use <code>shared_ptr</code> for shared resource management</li>
+<li>Avoid raw <code>new</code> - use <code>make_shared</code>, <code>make_unique</code></li>
+<li>Use <code>weak_ptr</code> for pointers that can dangle (cache etc)</li>
+</ul></li>
+</ul>
+</section><section id="conclusion-for-smart-pointers" class="slide level3">
+<h3>Conclusion for Smart Pointers</h3>
+<ul>
+<li>Default to standard library, check compiler</li>
+<li>Lots of other Smart Pointers
+<ul>
+<li><a href="http://www.boost.org">Boost</a> (use STL).</li>
+<li><a href="http://www.itk.org">ITK</a></li>
+<li><a href="http://www.vtk.org/Wiki/VTK/Tutorials/SmartPointers">VTK</a></li>
+<li><a href="https://wiki.qt.io/Smart_Pointers">Qt Smart Pointers</a></li>
+</ul></li>
+<li>Don’t be tempted to write your own</li>
+<li>Always read the manual</li>
+<li>Always consistently use it</li>
+</ul>
+</section><section id="homework---14" class="slide level3">
+<h3>Homework - 14</h3>
+<ul>
+<li>Create a memory leak using bare pointers and <code>new</code> to heap allocate and then repeat using using smart pointers</li>
+<li>Think of a use case where a resource should be uniquely owned and implement as a short application</li>
+<li>Think of a use case where the resource is shared between multiple and implement</li>
+<li><em>Note: in lecture 6 you will learn how to use tools such as <code>valgrind</code> to consistently check for memory leaks</em></li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="http://lab.hakim.se/reveal-js/lib/js/head.min.js"></script>
+  <script src="http://lab.hakim.se/reveal-js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: "100%",
+        height: "100%",
+        // Factor of the display size that should remain empty around the content
+        margin: 0,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.1,
+        maxScale: 1.5,
+        math: {
+          mathjax: '/usr/share/javascript/mathjax/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'http://lab.hakim.se/reveal-js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/math/math.js', async: true },
+          { src: 'http://lab.hakim.se/reveal-js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
